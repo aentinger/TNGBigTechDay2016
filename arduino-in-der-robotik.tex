@@ -58,7 +58,6 @@
   language={C++},
   basicstyle=\footnotesize
 }
-
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
@@ -69,6 +68,7 @@
 \date{\today} % Date, can be changed to a custom date
 %----------------------------------------------------------------------------------------
 \AtBeginSection{\frame{\sectionpage}}
+\AtBeginSubsection{\frame{\subsectionpage}}
 %----------------------------------------------------------------------------------------
 \begin{document}
 %----------------------------------------------------------------------------------------
@@ -184,6 +184,22 @@
 \begin{frame}{Alexander Entinger (4)}
 \begin{columns}
  \begin{column}{0.5\textwidth}
+  \begin{large}ROS enabled SLAM Demonstrator \textbf{Beauty Queen}\end{large}
+  \begin{itemize}
+   \item Masterarbeitsprojekt (2012/13)
+  \end{itemize}
+ \end{column}
+ \begin{column}{0.5\textwidth}
+ \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{./images/robot-beauty-queen.jpg}
+  \label{fig:robot-beauty-queen}
+ \end{figure}
+\end{column}
+\end{columns}
+	
+\begin{columns}
+ \begin{column}{0.5\textwidth}
   \begin{large}Hexapod \textbf{Lex}\end{large}
  \end{column}
  \begin{column}{0.5\textwidth}
@@ -195,227 +211,238 @@
  \end{column}
 \end{columns}
 
-\begin{columns}
- \begin{column}{0.5\textwidth}
-  \begin{large}ROS enabled SLAM Demonstrator \textbf{Beauty Queen}\end{large}
-  \begin{itemize}
-   \item Masterarbeitsprojekt (2012/13)
-  \end{itemize}
- \end{column}
- \begin{column}{0.5\textwidth}
-  \begin{figure}[H]
-   \centering
-   \includegraphics[width=0.7\textwidth]{./images/robot-beauty-queen.jpg}
-   \label{fig:robot-beauty-queen}
-  \end{figure}
- \end{column}
-\end{columns}
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\section{Was ist eigentlich Arduino?}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{Arduino}
+\begin{large}TODO\end{large}
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\section{Arduino in der Robotik}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{Sergeant Pain}
+
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{Evolution}
+	
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{Schnauzer}
+	
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{Steroid}
+	
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{Beauty Queen}
+	
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Motivation}
-\begin{itemize}
- \item Die Entwicklung von autonomen Systemen erfordert einen \textbf{enormen Zeitaufwand}
- \begin{itemize}
-  \item \textbf{Hardware}, \textbf{Soft}- und \textbf{Firmware}
-  \item \textbf{Schnittstellen} und \textbf{Kommunikationsprotokolle} zwischen den zahlreichen Subsystemen
- \end{itemize}
-\end{itemize}
-\begin{itemize}
- \item \textbf{Beobachtung}: Viele Sensoren und Aktoren haben identische Schnittstellen
- \begin{itemize}
-  \item IR Distanzsensor/Temperatursenor/Lichtsensor  $\rightarrow$ Analoge Spannung
-  \item Ultaschall Distanzsensor/Beschleunigungssensor/Gyroskop $\rightarrow$ I2C
-  \item DC Motor, RC Servo Motor $\rightarrow$ PWM
- \end{itemize}
- \end{itemize}
-\begin{itemize}
- \item \textbf{Ziel}: Entwicklung eines I/O-Systems welche die meist verwendeten I/O-Funktionen in \textbf{einem wiederverwendbaren I/O-Modul} integriert
- \begin{itemize}
-  \item \textbf{Reduzierung} der f\"ur die Entwicklung eines autonomen Systems ben\"otigte Zeit $\rightarrow$ Das Rad muss nicht immer wieder neu erfunden werden.
- \end{itemize}
-\end{itemize}
+	\begin{itemize}
+		\item Die Entwicklung von autonomen Systemen erfordert einen \textbf{enormen Zeitaufwand}
+		\begin{itemize}
+			\item \textbf{Hardware}, \textbf{Soft}- und \textbf{Firmware}
+			\item \textbf{Schnittstellen} und \textbf{Kommunikationsprotokolle} zwischen den zahlreichen Subsystemen
+		\end{itemize}
+	\end{itemize}
+	\begin{itemize}
+		\item \textbf{Beobachtung}: Viele Sensoren und Aktoren haben identische Schnittstellen
+		\begin{itemize}
+			\item IR Distanzsensor/Temperatursenor/Lichtsensor  $\rightarrow$ Analoge Spannung
+			\item Ultaschall Distanzsensor/Beschleunigungssensor/Gyroskop $\rightarrow$ I2C
+			\item DC Motor, RC Servo Motor $\rightarrow$ PWM
+		\end{itemize}
+	\end{itemize}
+	\begin{itemize}
+		\item \textbf{Ziel}: Entwicklung eines I/O-Systems welche die meist verwendeten I/O-Funktionen in \textbf{einem wiederverwendbaren I/O-Modul} integriert
+		\begin{itemize}
+			\item \textbf{Reduzierung} der f\"ur die Entwicklung eines autonomen Systems ben\"otigte Zeit $\rightarrow$ Das Rad muss nicht immer wieder neu erfunden werden.
+		\end{itemize}
+	\end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\section{Arduino-I/O-System}
-%%----------------------------------------------------------------------------------------
-\begin{frame}{Implementierung (1)}
-\begin{large}TODO: Why and what is Arduino\end{large}
-\end{frame}
-%%----------------------------------------------------------------------------------------
-\begin{frame}[fragile]{Implementierung (2)}
-\begin{itemize}
- \item \textbf{Hardware} (Arduino Uno) + \textbf{Software}
- \begin{itemize}
-  \item Firmware f\"ur Arduino Uno
-  \item C++ Library \textbf{libarduinoio}
- \end{itemize}
- \begin{figure}[htbp]
-  \centering
-  \includegraphics[scale=0.2]{./images/arduinoio-system-overview.png}
- \end{figure}
- \item \textbf{Highlevel Ansteuerung} von $\mu{}C$-I/O-Funktionen
-\end{itemize}
-\begin{lstlisting}
-auto oD2 = io.createGpioOutputPin(arduinoio::D2, false);
-bool const success = oD2->setPinValue(true));
-bool const pin_value = oD2->getPinValue();
-\end{lstlisting}
+\begin{frame}[fragile]{Implementierung}
+	\begin{itemize}
+		\item \textbf{Hardware} (Arduino Uno) + \textbf{Software}
+		\begin{itemize}
+			\item Firmware f\"ur Arduino Uno
+			\item C++ Library \textbf{libarduinoio}
+		\end{itemize}
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[scale=0.2]{./images/arduinoio-system-overview.png}
+		\end{figure}
+		\item \textbf{Highlevel Ansteuerung} von $\mu{}C$-I/O-Funktionen
+	\end{itemize}
+	\begin{lstlisting}
+	auto oD2 = io.createGpioOutputPin(arduinoio::D2, false);
+	bool const success = oD2->setPinValue(true));
+	bool const pin_value = oD2->getPinValue();
+	\end{lstlisting}
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Leistungsumfang}
-\begin{itemize}
- \item I/O-Funktion verf\"ugbar via $\mu{}C$-I/O-Pin:
- \begin{table}[htbp]
-  \begin{tabular}{|c|c|}
-  \hline 
-  \textbf{I/O-Funktion} & \textbf{Anzahl von I/O-Einheiten} \\ 
-  \hline \hline 
-  Analoger Eingang & Max. 6 \\ 
-  \hline 
-  Digitaler Eingang & max. 12  \\ 
-  \hline
-  Digitaler Ausgang & max. 12 \\ 
-  \hline
-  Hardware PWM & max. 2 \\ 
-  \hline
-  Software PWM & max. 6 \\ 
-  \hline
-  Event Z\"ahler & max. 2 \\
-  \hline
-  I2C Br\"ucke & max. 1 \\
-  \hline
-  \end{tabular}
- \end{table}
- \item Weiters:
- \begin{itemize}
-  \item Hardware-Reset
-  \item 16-Bit Board-ID
-  \item Chip-Temperature
- \end{itemize}
-\end{itemize}
+	\begin{itemize}
+		\item I/O-Funktion verf\"ugbar via $\mu{}C$-I/O-Pin:
+		\begin{table}[htbp]
+			\begin{tabular}{|c|c|}
+				\hline 
+				\textbf{I/O-Funktion} & \textbf{Anzahl von I/O-Einheiten} \\ 
+				\hline \hline 
+				Analoger Eingang & Max. 6 \\ 
+				\hline 
+				Digitaler Eingang & max. 12  \\ 
+				\hline
+				Digitaler Ausgang & max. 12 \\ 
+				\hline
+				Hardware PWM & max. 2 \\ 
+				\hline
+				Software PWM & max. 6 \\ 
+				\hline
+				Event Z\"ahler & max. 2 \\
+				\hline
+				I2C Br\"ucke & max. 1 \\
+				\hline
+			\end{tabular}
+		\end{table}
+		\item Weiters:
+		\begin{itemize}
+			\item Hardware-Reset
+			\item 16-Bit Board-ID
+			\item Chip-Temperature
+		\end{itemize}
+	\end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Verifikation (1)}
-\begin{itemize}
- \item Die Verifikation der individuellen Komponenten ist nicht zielf\"uhrend $\rightarrow$ Verifikation des Gesamtsystems notwendig
-\end{itemize}
-\begin{itemize}
- \item Gesamtsystem = C++ Library, Kommunikationsschnittstelle, Arduino Firmware $\rightarrow$ \textbf{Ende-Zu-Ende-Verifikation}
-\end{itemize}
-\begin{itemize}
- \item \textbf{Idee}: Einige Pins werden als Eing\"ange, andere als Ausg\"ange definiert und diese auf \textbf{intelligente Art und Weise} miteinander verbunden
-\end{itemize}
-\begin{itemize}
- \item \textbf{Unit Test Framework} f\"ur automatische Ausf\"uhrung aller Tests
-\end{itemize}
+	\begin{itemize}
+		\item Die Verifikation der individuellen Komponenten ist nicht zielf\"uhrend $\rightarrow$ Verifikation des Gesamtsystems notwendig
+	\end{itemize}
+	\begin{itemize}
+		\item Gesamtsystem = C++ Library, Kommunikationsschnittstelle, Arduino Firmware $\rightarrow$ \textbf{Ende-Zu-Ende-Verifikation}
+	\end{itemize}
+	\begin{itemize}
+		\item \textbf{Idee}: Einige Pins werden als Eing\"ange, andere als Ausg\"ange definiert und diese auf \textbf{intelligente Art und Weise} miteinander verbunden
+	\end{itemize}
+	\begin{itemize}
+		\item \textbf{Unit Test Framework} f\"ur automatische Ausf\"uhrung aller Tests
+	\end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Verifikation (2)}
-\begin{itemize}
- \item Digitale Ausg\"ange \textbf{erzeugen} analoge Spannungen via \textbf{R2R Widerstandsnetzwerk}
- \item Analoge Eing\"ange \textbf{messen} diese analogen Spannungen
- \item Testframework \textbf{vergleicht} die gemessene Spannung mit der berechneten Spannung
-\end{itemize}
-\begin{itemize}
- \item 12 digitale Ausg\"ange + 6 analoge Eing\"ange $\rightarrow$ \textbf{6 R2R Widerstandsnetzwerke} mit 2 Bit Aufl\"osung
-\end{itemize}
-\begin{columns}
- \begin{column}{0.4\textwidth}
-  \begin{figure}[htbp]
-   \centering
-   \includegraphics[scale=0.2]{./images/arduinoio-r2r.png}
-  \end{figure}
- \end{column}
- \begin{column}{0.4\textwidth}
- \begin{figure}[htbp]
-  \centering
-  \includegraphics[scale=0.6]{./images/arduinoio-r2r-network.pdf}
-  \end{figure}
- \end{column}
-\end{columns}
+	\begin{itemize}
+		\item Digitale Ausg\"ange \textbf{erzeugen} analoge Spannungen via \textbf{R2R Widerstandsnetzwerk}
+		\item Analoge Eing\"ange \textbf{messen} diese analogen Spannungen
+		\item Testframework \textbf{vergleicht} die gemessene Spannung mit der berechneten Spannung
+	\end{itemize}
+	\begin{itemize}
+		\item 12 digitale Ausg\"ange + 6 analoge Eing\"ange $\rightarrow$ \textbf{6 R2R Widerstandsnetzwerke} mit 2 Bit Aufl\"osung
+	\end{itemize}
+	\begin{columns}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[htbp]
+				\centering
+				\includegraphics[scale=0.2]{./images/arduinoio-r2r.png}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[htbp]
+				\centering
+				\includegraphics[scale=0.6]{./images/arduinoio-r2r-network.pdf}
+			\end{figure}
+		\end{column}
+	\end{columns}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Anwendungen (1)}
-\begin{itemize}
- \item \textbf{Command execution time} (CED): Wie lange dauert ein I/O-Befehl?
-\end{itemize}
-\begin{table}[htbp]
- \begin{tabular}{|c|c|}
- \hline 
- \textbf{Command} & \textbf{CED, [CED] = ms} \\ 
- \hline \hline 
- Get ID & 4.15532 ms \\ 
- \hline 
- Set pin value & 4.64086 ms  \\ 
- \hline
- Get pin value & 4.6447 ms \\ 
- \hline
- Get analog value & 5.00152 ms \\ 
- \hline
- I2C Write (1 Byte)  & 4.88282 ms\\ 
- \hline
- I2C Read (1 Byte) & 6.25022 ms \\
- \hline
- \end{tabular}
-\end{table}
-\begin{itemize}
- \item \textbf{Schlussfolgerung}: Hauptanwendungsgebiet sind Applikationen bei denen die CED keine gro\ss{}e Rolle spielt, wie z.B.
- \begin{itemize}
-  \item Steuerung von Status LEDs, \"Uberwachen der Batteriespannung, (RC Servo Ansteuerung), etc.
- \end{itemize}
-\end{itemize}
+\begin{frame}{Command Execution Time}
+	\begin{itemize}
+		\item \textbf{Command execution time} (CED): Wie lange dauert ein I/O-Befehl?
+	\end{itemize}
+	\begin{table}[htbp]
+		\begin{tabular}{|c|c|}
+			\hline 
+			\textbf{Command} & \textbf{CED, [CED] = ms} \\ 
+			\hline \hline 
+			Get ID & 4.15532 ms \\ 
+			\hline 
+			Set pin value & 4.64086 ms  \\ 
+			\hline
+			Get pin value & 4.6447 ms \\ 
+			\hline
+			Get analog value & 5.00152 ms \\ 
+			\hline
+			I2C Write (1 Byte)  & 4.88282 ms\\ 
+			\hline
+			I2C Read (1 Byte) & 6.25022 ms \\
+			\hline
+		\end{tabular}
+	\end{table}
+	\begin{itemize}
+		\item \textbf{Schlussfolgerung}: Hauptanwendungsgebiet sind Applikationen bei denen die CED keine gro\ss{}e Rolle spielt, wie z.B.
+		\begin{itemize}
+			\item Steuerung von Status LEDs, \"Uberwachen der Batteriespannung, (RC Servo Ansteuerung), etc.
+		\end{itemize}
+	\end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Anwendungen (2)}
-\begin{itemize}
- \item F\"ur \textbf{Simultaneous Localization and Mapping} (SLAM) modifiziertes RC-Auto
- \item Aufgaben des Arduino-I/O-Systems:
- \begin{columns}
-  \begin{column}{0.5\textwidth}
-  \begin{itemize}
-   \item \textbf{Steuern}
-   \begin{itemize}
-    \item Electronic Speed Controller
-    \item Lenk- und Getriebeservo
-    \item Status LEDs
-   \end{itemize}
-  \end{itemize}
-  \end{column}
-  \begin{column}{0.5\textwidth}
-  \begin{itemize}
-   \item \textbf{\"Uberwachen}
-   \begin{itemize}
-    \item Batteriespannung
-   \end{itemize}
-  \end{itemize}
-  \end{column}
- \end{columns}
-\begin{figure}[htbp]
- \centering
- \includegraphics[scale=0.40]{./images/robot-beauty-queen.jpg}
-\end{figure}
-\end{itemize}
+\begin{frame}{Anwendung in Beauty Queen}
+	\begin{itemize}
+		\item F\"ur \textbf{Simultaneous Localization and Mapping} (SLAM) modifiziertes RC-Auto
+		\item Aufgaben des Arduino-I/O-Systems:
+		\begin{columns}
+			\begin{column}{0.5\textwidth}
+				\begin{itemize}
+					\item \textbf{Steuern}
+					\begin{itemize}
+						\item Electronic Speed Controller
+						\item Lenk- und Getriebeservo
+						\item Status LEDs
+					\end{itemize}
+				\end{itemize}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+				\begin{itemize}
+					\item \textbf{\"Uberwachen}
+					\begin{itemize}
+						\item Batteriespannung
+					\end{itemize}
+				\end{itemize}
+			\end{column}
+		\end{columns}
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[scale=0.40]{./images/robot-beauty-queen.jpg}
+		\end{figure}
+	\end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Ressourcen}
-\begin{itemize}
- \item Der Quellcodes des Arduino-I/O-Systems steht unter der \textbf{BSD-3}-Lizenz
- \begin{itemize}
-  \item Kann f\"ur kommerzielle Applikationen genutzt werden
- \end{itemize}
-\end{itemize}
-\begin{itemize}
- \item \url{https://github.com/lxrobotics/arduinoio}
-\end{itemize}
+	\begin{itemize}
+		\item Der Quellcodes des Arduino-I/O-Systems steht unter der \textbf{BSD-3}-Lizenz
+		\begin{itemize}
+			\item Kann f\"ur kommerzielle Applikationen genutzt werden
+		\end{itemize}
+	\end{itemize}
+	\begin{itemize}
+		\item \url{https://github.com/lxrobotics/arduinoio}
+	\end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}[allowframebreaks]{References}
-\scriptsize{\bibliographystyle{ieeetr}}
-\bibliography{references} %bibtex file name without .bib extension
+\begin{frame}{Lex}
+	
 \end{frame}
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\Huge{\centerline{The End}}
+	\Huge{\centerline{Fragen?}}
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}[allowframebreaks]{References}
+%\scriptsize{\bibliographystyle{ieeetr}}
+%\bibliography{references} %bibtex file name without .bib extension
 \end{frame}
 %----------------------------------------------------------------------------------------
 \end{document} 
