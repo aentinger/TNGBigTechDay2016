@@ -64,28 +64,20 @@
 \title[]{Arduino in der Robotik} % The short title appears at the bottom of every slide, the full title is only on the title page
 %----------------------------------------------------------------------------------------
 \author{Alexander Entinger} % Your name
-\institute{LXRobotics}
+\institute{LXRobotics GmbH}
 \date{\today} % Date, can be changed to a custom date
 %----------------------------------------------------------------------------------------
-\AtBeginSection{\frame{\sectionpage}}
-\AtBeginSubsection{\frame{\subsectionpage}}
-%----------------------------------------------------------------------------------------
 \begin{document}
+%----------------------------------------------------------------------------------------
+\section{Arduino in der Robotik}
 %----------------------------------------------------------------------------------------
 \begin{frame}
 \titlepage % Print the title page as the first slide
 \end{frame}
-%----------------------------------------------------------------------------------------
-%\begin{frame}
-\frametitle{Inhalt} % Table of contents slide, comment this block out to remove it
-\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
-%\end{frame}
 %%----------------------------------------------------------------------------------------
 %%	PRESENTATION SLIDES
 %%----------------------------------------------------------------------------------------
-\section{Einleitung}
-%%----------------------------------------------------------------------------------------
-\begin{frame}{Alexander Entinger (1)}
+\begin{frame}{Alexander Entinger - Beruflich}
 \begin{itemize}
  \item CEO/CTO LXRobotics
   \begin{figure}[H]
@@ -115,7 +107,15 @@
 \end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Alexander Entinger (2)}
+\begin{frame}{LXRobotics}
+\begin{large}TODO\end{large}
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{Arduino}
+\begin{large}TODO\end{large}
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{Alexander Entinger - Roboter (1)}
 \begin{columns}
  \begin{column}{0.5\textwidth}
   \begin{large}Mini Sumo Roboter \textbf{Sergeant Pain}\end{large}
@@ -149,7 +149,7 @@
 \end{columns}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Alexander Entinger (3)}
+\begin{frame}{Alexander Entinger - Roboter (2)}
 \begin{columns}
  \begin{column}{0.5\textwidth}
   \begin{large}Featherweight \textbf{Schnauzer}\end{large}
@@ -181,7 +181,7 @@
 \end{columns}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Alexander Entinger (4)}
+\begin{frame}{Alexander Entinger - Roboter (3)}
 \begin{columns}
  \begin{column}{0.5\textwidth}
   \begin{large}ROS enabled SLAM Demonstrator \textbf{Beauty Queen}\end{large}
@@ -213,35 +213,58 @@
 
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\section{Was ist eigentlich Arduino?}
-%%----------------------------------------------------------------------------------------
-\begin{frame}{Arduino}
-\begin{large}TODO\end{large}
+\begin{frame}{Sergeant Pain (1)}
+ \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{./images/robot-sergeant-pain.jpg}
+ \end{figure}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\section{Arduino in der Robotik}
-%%----------------------------------------------------------------------------------------
-\begin{frame}{Sergeant Pain}
+\begin{frame}{Sergeant Pain (2)}
 
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Evolution}
+\begin{frame}{Evolution (1)}
+ \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{./images/robot-evolution.jpg}
+ \end{figure}
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{Evolution (2)}
+
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{Schnauzer (1)}
+ \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{./images/robot-schnauzer.jpg}
+ \end{figure}
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{Schnauzer (2)}
 	
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Schnauzer}
-	
+\begin{frame}{Steroid (1)}
+ \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{./images/robot-steroid.jpg}
+ \end{figure}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Steroid}
+\begin{frame}{Steroid (2)}
 	
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Beauty Queen}
-	
+ \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{./images/robot-beauty-queen.jpg}
+ \end{figure}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Motivation}
+\begin{frame}{Arduino-I/O-System: Motivation}
 	\begin{itemize}
 		\item Die Entwicklung von autonomen Systemen erfordert einen \textbf{enormen Zeitaufwand}
 		\begin{itemize}
@@ -265,7 +288,7 @@
 	\end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}[fragile]{Implementierung}
+\begin{frame}[fragile]{Arduino-I/O-System: Implementierung}
 	\begin{itemize}
 		\item \textbf{Hardware} (Arduino Uno) + \textbf{Software}
 		\begin{itemize}
@@ -285,7 +308,7 @@
 	\end{lstlisting}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Leistungsumfang}
+\begin{frame}{Arduino-I/O-System: Angebotene I/O-Funktionen}
 	\begin{itemize}
 		\item I/O-Funktion verf\"ugbar via $\mu{}C$-I/O-Pin:
 		\begin{table}[htbp]
@@ -318,7 +341,7 @@
 	\end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Verifikation (1)}
+\begin{frame}{Arduino-I/O-System: Verifikation (1)}
 	\begin{itemize}
 		\item Die Verifikation der individuellen Komponenten ist nicht zielf\"uhrend $\rightarrow$ Verifikation des Gesamtsystems notwendig
 	\end{itemize}
@@ -333,7 +356,7 @@
 	\end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Verifikation (2)}
+\begin{frame}{Arduino-I/O-System: Verifikation (2)}
 	\begin{itemize}
 		\item Digitale Ausg\"ange \textbf{erzeugen} analoge Spannungen via \textbf{R2R Widerstandsnetzwerk}
 		\item Analoge Eing\"ange \textbf{messen} diese analogen Spannungen
@@ -358,7 +381,7 @@
 	\end{columns}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Command Execution Time}
+\begin{frame}{Arduino-I/O-System: Timing}
 	\begin{itemize}
 		\item \textbf{Command execution time} (CED): Wie lange dauert ein I/O-Befehl?
 	\end{itemize}
@@ -389,38 +412,33 @@
 	\end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Anwendung in Beauty Queen}
-	\begin{itemize}
-		\item F\"ur \textbf{Simultaneous Localization and Mapping} (SLAM) modifiziertes RC-Auto
-		\item Aufgaben des Arduino-I/O-Systems:
-		\begin{columns}
-			\begin{column}{0.5\textwidth}
-				\begin{itemize}
-					\item \textbf{Steuern}
-					\begin{itemize}
-						\item Electronic Speed Controller
-						\item Lenk- und Getriebeservo
-						\item Status LEDs
-					\end{itemize}
-				\end{itemize}
-			\end{column}
-			\begin{column}{0.5\textwidth}
-				\begin{itemize}
-					\item \textbf{\"Uberwachen}
-					\begin{itemize}
-						\item Batteriespannung
-					\end{itemize}
-				\end{itemize}
-			\end{column}
-		\end{columns}
-		\begin{figure}[htbp]
-			\centering
-			\includegraphics[scale=0.40]{./images/robot-beauty-queen.jpg}
-		\end{figure}
-	\end{itemize}
+\begin{frame}{Arduino-I/O-System: Anwendung in Beauty Queen}
+\begin{large}\textbf{Aufgaben des Arduino-I/O-Systems:}\end{large}
+ \begin{itemize}
+  \item \textbf{Steuern}
+  \begin{itemize}
+   \item Electronic Speed Controller
+   \item Lenk- und Getriebeservo
+   \item Status LEDs
+  \end{itemize}
+ \end{itemize}
+ \begin{itemize}
+  \item \textbf{\"Uberwachen}
+  \begin{itemize}
+   \item Batteriespannung
+  \end{itemize}
+ \end{itemize}
+\begin{large}\textbf{Einschr\"ankungen:}\end{large}
+\begin{itemize}
+ \item F\"ur Echtzeitanwendungen gar nicht oder nur eingeschr\"ankt einsetzbar
+ \begin{itemize}
+  \item Kommunikation mit der IMU
+  \item Auswertung der Reifenencoder
+ \end{itemize}
+\end{itemize}
 \end{frame}
-%%----------------------------------------------------------------------------------------
-\begin{frame}{Ressourcen}
+%----------------------------------------------------------------------------------------
+\begin{frame}{Arduino-I/O-System: Ressourcen}
 	\begin{itemize}
 		\item Der Quellcodes des Arduino-I/O-Systems steht unter der \textbf{BSD-3}-Lizenz
 		\begin{itemize}
@@ -433,16 +451,29 @@
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Lex}
-	
+ \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{./images/robot-lex.jpg}
+ \end{figure}
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{Lex}
+
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{Conrad}
+ \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{./images/robot-conrad.jpg}
+ \end{figure}
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{Conrad}
+
 \end{frame}
 %----------------------------------------------------------------------------------------
 \begin{frame}
-	\Huge{\centerline{Fragen?}}
-\end{frame}
-%%----------------------------------------------------------------------------------------
-\begin{frame}[allowframebreaks]{References}
-%\scriptsize{\bibliographystyle{ieeetr}}
-%\bibliography{references} %bibtex file name without .bib extension
+	\Huge{\centerline{Fragen}}
 \end{frame}
 %----------------------------------------------------------------------------------------
 \end{document} 
