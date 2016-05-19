@@ -77,7 +77,7 @@
 %%----------------------------------------------------------------------------------------
 %%	PRESENTATION SLIDES
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Alexander Entinger - Beruflich}
+\begin{frame}{Alexander Entinger}
 \begin{itemize}
  \item CEO/CTO LXRobotics
   \begin{figure}[H]
@@ -107,12 +107,19 @@
 \end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{LXRobotics}
+\begin{frame}{Arduino (1)}
 \begin{large}TODO\end{large}
+\begin{itemize}
+	\item Idee durch 3 Italiener ...
+\end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Arduino}
-\begin{large}TODO\end{large}
+\begin{frame}{Arduino (2)}
+	\begin{large}TODO\end{large}
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{Arduino Shields}
+	\begin{large}TODO\end{large}
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Alexander Entinger - Roboter (1)}
@@ -213,47 +220,81 @@
 
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Sergeant Pain (1)}
+\begin{frame}{Sergeant Pain}
  \begin{figure}[H]
   \centering
   \includegraphics[width=0.7\textwidth]{./images/robot-sergeant-pain.jpg}
  \end{figure}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Sergeant Pain (2)}
-
+\begin{frame}{\"Uberblick}
+\begin{large}\textbf{Ziel}\end{large}
+\begin{itemize}
+	\item Autonome Erkennung des gegnerischen Roboters um diesen anschlie\ss{}end aus dem Ring zu schieben
+\end{itemize}
+\vspace{1cm}
+\begin{large}\textbf{I/O}\end{large}
+\begin{itemize}
+	\item Sensoren
+	\begin{itemize}
+		\item 7 Infrarotdistanzsensoren (Digitaler Eingang)
+		\item 1 Kippschalter (Digitaler Eingang)
+	\end{itemize}
+	\item Aktoren
+	\begin{itemize}
+		\item 2 Gleichstromgetriebemotoren (Puls-Weiten-Modulation)
+		\item 1 RC Servo (Puls-Weiten-Modulation)
+	\end{itemize}
+\end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Evolution (1)}
+\begin{frame}{Evolution}
  \begin{figure}[H]
   \centering
   \includegraphics[width=0.7\textwidth]{./images/robot-evolution.jpg}
  \end{figure}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Evolution (2)}
-
+\begin{frame}{\"Uberblick}
+\begin{large}\textbf{Ziel}\end{large}
+\begin{itemize}
+	\item Siehe Sergeant Pain
+\end{itemize}
+\vspace{1cm}
+\begin{large}\textbf{I/O}\end{large}
+\begin{itemize}
+	\item Sensoren
+	\begin{itemize}
+		\item 5 Infrarotdistanzsensoren (Digitaler Eingang)
+		\item 1 Infrarotstartmodul (Digitaler Eingang)
+	\end{itemize}
+	\item Aktoren
+	\begin{itemize}
+		\item 2 Brushless Outrunner Motoren
+		\item 2 RC Servos (Puls-Weiten-Modulation)
+	\end{itemize}
+\end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Schnauzer (1)}
+\begin{frame}{Schnauzer}
  \begin{figure}[H]
   \centering
   \includegraphics[width=0.7\textwidth]{./images/robot-schnauzer.jpg}
  \end{figure}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Schnauzer (2)}
+\begin{frame}{\"Uberblick}
 	
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Steroid (1)}
+\begin{frame}{Steroid}
  \begin{figure}[H]
   \centering
   \includegraphics[width=0.7\textwidth]{./images/robot-steroid.jpg}
  \end{figure}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Steroid (2)}
+\begin{frame}{\"Uberblick}
 	
 \end{frame}
 %%----------------------------------------------------------------------------------------
@@ -262,6 +303,10 @@
   \centering
   \includegraphics[width=0.7\textwidth]{./images/robot-beauty-queen.jpg}
  \end{figure}
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{\"Uberblick}
+	
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Arduino-I/O-System: Motivation}
@@ -301,11 +346,11 @@
 		\end{figure}
 		\item \textbf{Highlevel Ansteuerung} von $\mu{}C$-I/O-Funktionen
 	\end{itemize}
-	\begin{lstlisting}
-	auto oD2 = io.createGpioOutputPin(arduinoio::D2, false);
-	bool const success = oD2->setPinValue(true));
-	bool const pin_value = oD2->getPinValue();
-	\end{lstlisting}
+\begin{lstlisting}
+auto oD2 = io.createGpioOutputPin(arduinoio::D2, false);
+bool const success = oD2->setPinValue(true));
+bool const pin_value = oD2->getPinValue();
+\end{lstlisting}
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Arduino-I/O-System: Angebotene I/O-Funktionen}
@@ -430,9 +475,9 @@
  \end{itemize}
 \begin{large}\textbf{Einschr\"ankungen:}\end{large}
 \begin{itemize}
- \item F\"ur Echtzeitanwendungen gar nicht oder nur eingeschr\"ankt einsetzbar
+ \item Arduino-I/O-System f\"ur Echtzeitanwendungen gar nicht/nur eingeschr\"ankt einsetzbar: Folgende I/O Funktionen wurden über eine separate Firmware f\"ur den Bordrechner zur Verf\"ugung gestellt:
  \begin{itemize}
-  \item Kommunikation mit der IMU
+  \item Abfrage der Daten der IMU (Inertial Measurement Unit)
   \item Auswertung der Reifenencoder
  \end{itemize}
 \end{itemize}
@@ -457,7 +502,7 @@
  \end{figure}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Lex}
+\begin{frame}{\"Uberblick}
 
 \end{frame}
 %%----------------------------------------------------------------------------------------
@@ -468,7 +513,7 @@
  \end{figure}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Conrad}
+\begin{frame}{\"Uberblick}
 
 \end{frame}
 %----------------------------------------------------------------------------------------
