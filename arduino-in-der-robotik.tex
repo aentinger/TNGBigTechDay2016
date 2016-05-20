@@ -107,15 +107,83 @@
 \end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Arduino (1)}
-\begin{large}TODO\end{large}
+\begin{frame}{Die Anf\"ange von Arduino (1)}
 \begin{itemize}
-	\item Idee durch 3 Italiener ...
+ \item Arduino Core Team\cite{IEEE:2016:TheMakingOfArduino}:
+ \begin{itemize}
+  \item \textbf{Massimo Banzi (Associate Professor bei Interaction Design Institute Ivrea)}, David Cuartielles, Tom Igoe, Gianluca Martino, David Mellis
+ \end{itemize}
 \end{itemize}
+\begin{itemize}
+ \item Ziel: Die bisher bei IDII f\"ur \textbf{Physical Computing} Projekten eingesetzte \textbf{BASIC Stamp} ersetzen.
+\end{itemize}
+\begin{alertblock}{Physical Computing ...}
+... bezeichnet ein aus Hard- und Softwarekomponenten bestehendes System, welches mit der analogen Welt interagiert.
+\end{alertblock}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Arduino (2)}
-	\begin{large}TODO\end{large}
+\begin{frame}{Arduino Framework: Hardware}
+\begin{columns}
+ \begin{column}{0.6\textwidth}
+ \begin{itemize}
+  \item Kosteng\"unstiges $\mu$C Board auf Basis von (zumeist 8-Bit) ATMEL Prozessoren
+ \end{itemize}
+ \begin{itemize}
+  \item Arbeitspferd: \textbf{Arduino Uno} (ATMega328P)
+ \end{itemize}
+ \begin{itemize}
+  \item Weitere Arduinos:
+  \begin{itemize}
+   \item Diecimila/Duemilanove
+   \item Leonardo
+   \item Mega
+   \item Nano
+   \item Due (32 Bit Cortex-M3 basierter Atmel SAM3X8E)
+  \end{itemize}
+ \end{itemize}
+ \end{column}
+ \begin{column}{0.4\textwidth}
+  \begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{./images/arduino-uno.jpg}
+   \label{fig:arduino-uno}
+  \end{figure}
+ \end{column}
+\end{columns}
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}[fragile]{Arduino Framework: Software}
+\begin{itemize}
+ \item Kostenlose \textbf{Arduino-IDE} (Java)
+\end{itemize}
+\begin{itemize}
+ \item Komplexes Thema der Embedded Programmierung wird durch Software-Framework stark vereinfacht
+\end{itemize}
+\begin{itemize}
+ \item \textbf{Nur 2 Funktionen:}
+ \begin{itemize}
+  \item \textbf{setup} $\rightarrow$ wird beim Start einmalig durchlaufen
+  \item \textbf{loop} $\rightarrow$ wird kontinuierlich ausgef\"uhrt
+ \end{itemize}
+\end{itemize}
+\begin{itemize}
+ \item \textbf{Abstrakte High-Level Befehle} erm\"oglichen Hardware-Zugriff ohne Detail-Kenntnisse
+\end{itemize}
+\begin{lstlisting}[frame=single, language=C]
+pinMode(ledPin, OUTPUT);
+...
+digitalWrite(ledPin, HIGH);
+\end{lstlisting}
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{Wegbereiter der DIY-Revolution}
+\begin{itemize}
+ \item Hard- und Software steht unter permissiven Open-Source Lizensen
+\end{itemize}
+\begin{itemize}
+ \item Erste Auflage: 200 St\"uck
+ \item 2011: 250 000 St\"uck
+\end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Arduino Shields}
@@ -346,7 +414,7 @@
 		\end{figure}
 		\item \textbf{Highlevel Ansteuerung} von $\mu{}C$-I/O-Funktionen
 	\end{itemize}
-\begin{lstlisting}
+\begin{lstlisting}[frame=single, language=C]
 auto oD2 = io.createGpioOutputPin(arduinoio::D2, false);
 bool const success = oD2->setPinValue(true));
 bool const pin_value = oD2->getPinValue();
@@ -519,6 +587,11 @@ bool const pin_value = oD2->getPinValue();
 %----------------------------------------------------------------------------------------
 \begin{frame}
 	\Huge{\centerline{Fragen}}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}[allowframebreaks]{Quellenverzeichnis}
+\scriptsize{\bibliographystyle{ieeetr}}
+\bibliography{references} %bibtex file name without .bib extension
 \end{frame}
 %----------------------------------------------------------------------------------------
 \end{document} 
