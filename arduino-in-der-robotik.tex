@@ -222,7 +222,7 @@
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Die Anf\"ange von Arduino (1)}
 \begin{itemize}
-	 \item Entwicklung des Arduino Konzepts durch \textbf{Massimo Banzi} und \textbf{David Cuartielles}\footnote{Weitere Teammitglieder: Tom Igoe, Gianluca Martino, David Mellis\cite{IEEE:2016:TheMakingOfArduino}}
+	 \item Entwicklung des Arduino Konzepts durch \textbf{Massimo Banzi} und \textbf{David Cuartielles}\footnote{Weitere Teammitglieder: Tom Igoe, Gianluca Martino, David Mellis\cite{IEEE:2016:TheMakingOfArduino}\\}
 \end{itemize}
 \begin{itemize}
 	\item \textbf{Hintergrund}: Banzi war als \textbf{Associate Professor} bei dem \textbf{Interaction Design Institute Ivrea} (Italien) f\"ur die \textbf{Physical Computing} Projekte verantwortlich.
@@ -233,65 +233,80 @@
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Die Anf\"ange von Arduino (2)}
-\begin{itemize}
-	\item Bisherige IDII Plattform: \textbf{BASIC Stamp}
+\begin{columns}
+	\begin{column}{0.7\textwidth}
 	\begin{itemize}
-		\item \textbf{PIC} basierte $\mu{}$C-Platine mit integriertem BASIC-Interpreter
-		\item Nachteile:
+		\item Bisherige Plattform f\"ur Physical Computing am IDII: \textbf{BASIC Stamp}
 		\begin{itemize}
-			\item Teuer ($\approx$ 100 \$)
-			\item Nicht f\"ur alle Projekte ausreichende Rechenleistung
+			\item \textbf{PIC} basierte $\mu{}$C-Board mit integriertem BASIC-Interpreter
+			\item Nachteile:
+			\begin{itemize}
+				\item Teuer ($\approx$ 100 \$)
+				\item Nicht f\"ur alle Projekte ausreichende Rechenleistung
+			\end{itemize}
 		\end{itemize}
 	\end{itemize}
-\end{itemize}
+	\end{column}
+	\begin{column}{0.3\textwidth}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1.0\textwidth]{./images/basic-stamp.jpg}
+			\label{fig:basic-stamp}
+			\caption{BASIC Stamp\cite{Image:BasicSTAMP}}
+		\end{figure}
+	\end{column}
+\end{columns}
+\vspace{20px}
 \begin{itemize}
-	\item \textbf{Konsequenz:} Konzeption der \textbf{Hard- und Software}komponenten bestehenden \textbf{Arduino Plattform} in 2005
+	\item \textbf{Konsequenz:} Konzeption der aus \textbf{Hard- und Software}komponenten bestehenden \textbf{Arduino Plattform} in 2005
 \end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Arduino Plattform: Hardware}
 \begin{columns}
- \begin{column}{0.65\textwidth}
+ \begin{column}{0.7\textwidth}
  \begin{itemize}
-  \item Kosteng\"unstige $\mu$C-Board auf Basis von (zumeist 8-Bit) ATMEL Prozessoren
+  \item Kosteng\"unstige $\mu$C-Boards auf Basis von (zumeist 8-Bit) ATMEL Prozessoren
   \begin{itemize}
   	\item I/Os werden auf Buchsenleisten herausgef\"uhrt $\rightarrow$ einfacher Anschluss von Sensoren/Aktoren m\"oglich
+  	\item Schaltplan/Layout werden unter permissiver \textbf{Creative Commons Attribution Share-Alike} Lizenz freigegeben
   \end{itemize}
  \end{itemize}
  \begin{itemize}
   \item Arbeitspferd: \textbf{Arduino Uno} (ATMega328) ($\approx$ 20 \euro{}) 
  \end{itemize}
- \begin{itemize}
-  \item Weitere Arduinos:
-  \begin{itemize}
-   \item ATMega168: \textbf{Diecimila/Duemilanove}
-   \item ATMega32U4: \textbf{Leonardo}
-   \item ATMega2560: \textbf{Mega} 
-   \item SAM3X8E mit 32 Bit Cortex-M3 Core: \textbf{Due}
-   \item ...
-  \end{itemize}
- \end{itemize}
  \end{column}
- \begin{column}{0.4\textwidth}
+ \begin{column}{0.3\textwidth}
   \begin{figure}[H]
    \centering
    \includegraphics[width=0.9\textwidth]{./images/arduino-uno.jpg}
    \label{fig:arduino-uno}
+   \caption{Arduino Uno\cite{Image:ArduinoUno}}
   \end{figure}
  \end{column}
 \end{columns}
+ \begin{itemize}
+ 	\item Weitere Arduinos:
+ 	\begin{itemize}
+ 		\item ATMega168: \textbf{Diecimila/Duemilanove}
+ 		\item ATMega32U4: \textbf{Leonardo}
+ 		\item ATMega2560: \textbf{Mega} 
+ 		\item SAM3X8E (32 Bit Cortex-M3): \textbf{Due}
+ 		\item ...
+ 	\end{itemize}
+ \end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}[fragile]{Arduino Plattform: Software (1)}
 \begin{itemize}
-	\item Kostenlose \textbf{Arduino-IDE} (Java)
+	\item Kostenlose Open Source (GPL) \textbf{Arduino-IDE} (Java)
 \end{itemize}
 \begin{itemize}
 	\item Komplexes Thema der Embedded Programmierung wird durch Software-Framework stark vereinfacht
 	\begin{itemize}
 	 	\item \textbf{Nur 2 Funktionen:}
 	 	\begin{itemize}
-	 		\item \textbf{setup} $\rightarrow$ wird beim Start einmalig durchlaufen
+	 		\item \textbf{setup} $\rightarrow$ wird beim Start einmalig ausgef\"uhrt
 	 		\item \textbf{loop} $\rightarrow$ wird kontinuierlich ausgef\"uhrt
 	 	\end{itemize}
 	 \end{itemize}
@@ -311,19 +326,22 @@ void loop()
 %%----------------------------------------------------------------------------------------
 \begin{frame}[fragile]{Arduino Plattform: Software (2)}
 \begin{itemize}
- 	\item \textbf{Abstrakte High-Level Befehle} erm\"oglichen Hardware-Zugriff ohne Detail-Kenntnisse des verwendeten $\mu$Cs
+ 	\item $\mu$C-Bibliotheken (LGPL) erm\"oglichen Hardware-Zugriff \"uber \textbf{abstrakte High-Level Befehle} ohne Detail-Kenntnisse der Interna des verwendeten $\mu$Cs
 \end{itemize}
 \begin{lstlisting}[frame=single, language=C]
-digitalRead(buttonPin);
-...
-
+/* I/O (Digital/Analog) */
+int const buttonVal = digitalRead(buttonPin);
+int const analogValInLSB = analogRead(analogPin); 
 \end{lstlisting}
-\begin{itemize}
-	\item \textbf{Bootloader} erm\"oglicht \textbf{einfache Programmierung der Arduino Boards}
-	\begin{itemize}
-		\item Kompilieren und Programmieren \"uber \textbf{Strg+U} oder \textbf{Upload Button}
-	\end{itemize}
-\end{itemize}
+\begin{lstlisting}[frame=single, language=C]
+/* Communication (Serial/I2C) */
+Serial.println("My output string");
+
+Wire.beginTransmission(0x2C);
+Wire.write(regAddr);
+Wire.write(regVal);
+Wire.endTransmission();
+\end{lstlisting}
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Arduino Shields (1)}
@@ -421,7 +439,7 @@ static E_DIRECTION get_direction();
 \begin{frame}{\"Uberblick}
 \begin{large}\textbf{Ziel}\end{large}
 \begin{itemize}
-	\item Siehe Sergeant Pain
+	\item Autonome Erkennung des gegnerischen Roboters um diesen anschlie\ss{}end aus dem Ring zu schieben
 \end{itemize}
 \vspace{1cm}
 \begin{large}\textbf{I/O}\end{large}
@@ -638,7 +656,7 @@ bool const pin_value = oD2->getPinValue();
  \end{itemize}
 \begin{large}\textbf{Einschr\"ankungen:}\end{large}
 \begin{itemize}
- \item Arduino-I/O-System f\"ur Echtzeitanwendungen gar nicht/nur eingeschr\"ankt einsetzbar: Folgende I/O Funktionen wurden über eine separate Firmware f\"ur den Bordrechner zur Verf\"ugung gestellt:
+ \item Arduino-I/O-System f\"ur Echtzeitanwendungen gar nicht/nur eingeschr\"ankt einsetzbar: Folgende I/O Funktionen wurden \"uber eine separate Firmware f\"ur den Bordrechner zur Verf\"ugung gestellt:
  \begin{itemize}
   \item Abfrage der Daten der IMU (Inertial Measurement Unit)
   \item Auswertung der Reifenencoder
