@@ -418,15 +418,49 @@ static E_DIRECTION get_direction();
 \begin{itemize}
 	\item Sensoren
 	\begin{itemize}
-		\item 7 Infrarotdistanzsensoren (Digitaler Eingang)
-		\item 1 Kippschalter (Digitaler Eingang)
+		\item 7 x Infrarotdistanzsensoren (Digitaler Eingang)
+		\item 1 x Kippschalter (Digitaler Eingang)
 	\end{itemize}
 	\item Aktoren
 	\begin{itemize}
-		\item 2 Gleichstromgetriebemotoren (Puls-Weiten-Modulation)
-		\item 1 RC Servo (Puls-Weiten-Modulation)
+		\item 2 x Gleichstromgetriebemotoren (Puls-Weiten-Modulation)
+		\item 1 x RC Servo (Puls-Weiten-Modulation)
 	\end{itemize}
 \end{itemize}
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{Umsetzung}
+\begin{columns}
+	\begin{column}{0.7\textwidth}
+\begin{itemize}
+	\item Entwicklung 2010/11 $\rightarrow$ Arduino zwar verf\"ugbar, aber noch nicht bekannt $\rightarrow$ \textbf{RN-MiniControl} + \textbf{RN-VN2DualMotor}
+\end{itemize}
+\begin{itemize}
+	\item RN-MiniControl:
+	\begin{itemize}
+		\item ATMega168 als $\mu$C
+		\item I/Os werden auf Stift/Buchsenleisten herausgef\"uhrt
+		\item Einsteckbare Platinen (wie z.B RN-VN2DualMotor f\"ur die Motorsteuerung)
+		\item Programmierung via \textbf{BASIC} oder \textbf{C (AVR Studio)}
+	\end{itemize}
+\end{itemize}
+\begin{itemize}
+	\item Konzept der \textbf{RN-MiniControl} weist \textbf{starke \"Ahnlichkeiten mit dem Arduino} Konzept auf, \textbf{ABER} nach wie vor \textbf{Kenntnisse der Embedded Programmierung notwendig}
+\end{itemize}
+	\end{column}
+	\begin{column}{0.3\textwidth}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.8\textwidth]{./images/rn-minicontrol.jpg}
+		\caption{RN-MiniControl\cite{Image:RNMiniControl}}
+	\end{figure}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.8\textwidth]{./images/rn-vnh2dualmotor.jpg}
+		\caption{RN-VN2Dual...\cite{Image:RNVN2DualMotor}}
+	\end{figure}
+	\end{column}
+\end{columns}
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Evolution}
@@ -446,14 +480,64 @@ static E_DIRECTION get_direction();
 \begin{itemize}
 	\item Sensoren
 	\begin{itemize}
-		\item 5 Infrarotdistanzsensoren (Digitaler Eingang)
-		\item 1 Infrarotstartmodul (Digitaler Eingang)
+		\item 5 x Infrarotdistanzsensoren (Digitaler Eingang)
+		\item 1 x Infrarotstartmodul (Digitaler Eingang)
 	\end{itemize}
 	\item Aktoren
 	\begin{itemize}
-		\item 2 Brushless Outrunner Motoren
-		\item 2 RC Servos (Puls-Weiten-Modulation)
+		\item 2 x Brushless Outrunner Motoren
+		\item 2 x RC Servos (Puls-Weiten-Modulation)
 	\end{itemize}
+\end{itemize}
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{Umsetzung (1)}
+\begin{itemize}
+	\item Dezidierter $\mu$C f\"ur die Ansteuerung eines Brushless Motors notwendig $\rightarrow$ 3 $\mu$Cs ben\"otigt
+	\begin{itemize}
+		\item \textbf{$\mu$C1/2}: Steuerung des linken/rechten Motors
+		\item \textbf{$\mu$C3}: Auswertung der Sensoren und entsprechende Ansteuerung von $\mu$C1 und 2
+	\end{itemize}
+\end{itemize}
+\begin{itemize}
+	\item Entwicklung 2014 $\rightarrow$ Arduino Konzept bekannt, ABER mechanische Abmessungen von Arduino \textbf{verhindern optimale Ausn\"utzung} des vorhandenen Platzes
+\end{itemize}
+\begin{itemize}
+	\item Ausgehend vom Shield Gedanken wird \"ahnlich Sergeant Pain ein \textbf{Motorboard und} ein \textbf{Brainboard} entwickelt
+\end{itemize}
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{Umsetzung (2)}
+\begin{columns}
+	\begin{column}{0.8\textwidth}
+\begin{itemize}
+	\item \textbf{Motorboard}:
+	\begin{itemize}
+		\item 2 x ATMega328 (Arduino Uno)
+		\item 2 x 3 Halbbr\"ucken f\"ur Ansteuerung der Brushlessmotoren +
+		\item 2 x BEMF Filternetzwerk (Elektronik \"ahnlich dem LXRobotics Brushless Motorshield)
+	\end{itemize}
+\end{itemize}
+\begin{itemize}
+	\item \textbf{Brainboard}:
+	\begin{itemize}
+		\item 1 x ATMega32U4 (Arduino Leonardo)
+		\item Buchsenleisten f\"ur das Einstecken der Infrarotdistanzsensoren sowie des Infrarotstartmoduls
+		\item Kommunikation mit Motorboard via I2C
+	\end{itemize}
+\end{itemize}
+	\end{column}
+	\begin{column}{0.2\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=1.0\textwidth]{./images/evolution-motorboard.jpg}
+			\caption{Evolution Motorboard}
+		\end{figure}
+	\end{column}
+\end{columns}
+\vspace{20px}
+\begin{itemize}
+	\item \textbf{Implementierung der Softare} f\"ur sowohl Motorboard als auch Brainboard \textbf{als Arduino Libraries} $\rightarrow$ Plan der sp\"ateren Ver\"offentlichung im Rahmen eines Mini-Sumo-Bausatzes
 \end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
@@ -486,8 +570,40 @@ static E_DIRECTION get_direction();
  \end{figure}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{\"Uberblick}
-	
+\begin{frame}{\"Uberblick (1)}
+\begin{large}\textbf{Ziel}\end{large}
+\begin{itemize}
+	\item Umbau eines konventionellen RC-Automodellbausatzes in ein Fahrzeug f\"ur Simultaneous Localization and Mapping
+\end{itemize}
+\vspace{1cm}
+\begin{large}\textbf{I/O}\end{large}
+\begin{itemize}
+	\item Sensoren
+	\begin{itemize}
+		\item 1 x Microsoft Kinect
+		\item 1 x IMU
+		\item 2 x Reifenumdrehungssensoren
+	\end{itemize}
+	\item Aktoren
+	\begin{itemize}
+		\item 1 x Getriebservo (Puls-Weiten-Modulation)
+		\item 1 x Lenkservo (Puls-Weiten-Modulation)
+		\item 1 x Electronic Speed Controller (Puls-Weiten-Modulation)
+	\end{itemize}
+\end{itemize}	
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{\"Uberblick (1)}
+\begin{itemize}
+	\item \textbf{Problem}
+	\begin{itemize}
+		\item Sensordaten k\"onnen nicht durch ein Arduino ausgewertet werden $\rightarrow$ vollst\"andiger PC notwendig
+		\item PC kann wiederum nicht direkt mit Sensoren/Aktoren kommunizieren
+	\end{itemize}
+\end{itemize}
+\begin{itemize}
+	\item \textbf{L\"osung}: Entwicklung eines Arduino-I/O-Systems als Vermittler zwischen den Sensoren/Aktoren und dem PC
+\end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Arduino-I/O-System: Motivation}
@@ -684,7 +800,33 @@ bool const pin_value = oD2->getPinValue();
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{\"Uberblick}
-
+\begin{large}\textbf{Ziel}\end{large}
+\begin{itemize}
+	\item Bau eines Hexapods (weil es Spa\ss{} macht)
+\end{itemize}
+\vspace{1cm}
+\begin{large}\textbf{I/O}\end{large}
+\begin{itemize}
+	\item Sensoren
+	\begin{itemize}
+		\item TBD: 18 x Stromsensor
+		\item RaspberryPiCam
+	\end{itemize}
+	\item Aktoren
+	\begin{itemize}
+		\item 6 x 3 RC Servos (Puls-Weiten-Modulation)
+		\item 2 RC Servos (Kopf)
+	\end{itemize}
+\end{itemize}
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{Umsetzung}
+\begin{itemize}
+	\item Arduino-I/O-System nicht schnell genug f\"ur Erzeugung der ben\"otigten PWM-Steuersignale
+\end{itemize}
+\begin{itemize}
+	\item Neuer Ansatz notwendig: LXRobotics Servo Shield + Arduino + ROS Serial ... \textbf{TODO}
+\end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Conrad}
