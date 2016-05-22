@@ -58,7 +58,7 @@
   language={C++},
   basicstyle=\footnotesize
 }
-\usepackage{eurosym} %for EURO symbol
+\usepackage{marvosym} % for smileys
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
@@ -273,7 +273,7 @@
   \end{itemize}
  \end{itemize}
  \begin{itemize}
-  \item Arbeitspferd: \textbf{Arduino Uno} (ATMega328) ($\approx$ 20 \euro{}) 
+  \item Arbeitspferd: \textbf{Arduino Uno} (ATMega328) ($\approx$ 20 \EUR{}) 
  \end{itemize}
  \end{column}
  \begin{column}{0.3\textwidth}
@@ -393,11 +393,20 @@ static E_DIRECTION get_direction();
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Wegbereiter der DIY-Revolution}
 \begin{itemize}
-	\item Verkaufte St\"uckzahlen
+	\item Genaue Zahlen aufgrund der durch das Open-Hardware Konzept bedingten Arduino Clones schwer zu ermitteln
+\end{itemize}
+\vspace{10px}
+\begin{itemize}
+	\item \textbf{2005}: 200 (Erstauflage)\cite{IEEE:2016:TheMakingOfArduino}
+\end{itemize}
+\begin{itemize}
+	\item \textbf{2011}: $\approx$ 250 000\cite{IEEE:2016:TheMakingOfArduino}
+\end{itemize}
+\begin{itemize}
+	\item \textbf{2013}: $\approx$ 700 000\cite{Quora:ArduinoSalesNumbers}
 	\begin{itemize}
-		\item 2005: \textbf{200 St\"uck}
-		\item 2011: \textbf{250 000 St\"uck}
-	\end{itemize}		
+		\item + 700 000 Arduino Clones
+	\end{itemize}
 \end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
@@ -413,7 +422,7 @@ static E_DIRECTION get_direction();
 \begin{itemize}
 	\item Autonome Erkennung des gegnerischen Roboters um diesen anschlie\ss{}end aus dem Ring zu schieben
 \end{itemize}
-\vspace{1cm}
+\vspace{20px}
 \begin{large}\textbf{I/O}\end{large}
 \begin{itemize}
 	\item Sensoren
@@ -475,7 +484,7 @@ static E_DIRECTION get_direction();
 \begin{itemize}
 	\item Autonome Erkennung des gegnerischen Roboters um diesen anschlie\ss{}end aus dem Ring zu schieben
 \end{itemize}
-\vspace{1cm}
+\vspace{20px}
 \begin{large}\textbf{I/O}\end{large}
 \begin{itemize}
 	\item Sensoren
@@ -537,7 +546,7 @@ static E_DIRECTION get_direction();
 \end{columns}
 \vspace{20px}
 \begin{itemize}
-	\item \textbf{Implementierung der Softare} f\"ur sowohl Motorboard als auch Brainboard \textbf{als Arduino Libraries} $\rightarrow$ Plan der sp\"ateren Ver\"offentlichung im Rahmen eines Mini-Sumo-Bausatzes
+	\item \textbf{Implementierung der Softare} f\"ur sowohl Motorboard als auch Brainboard \textbf{als Arduino Libraries}
 \end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
@@ -549,18 +558,45 @@ static E_DIRECTION get_direction();
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{\"Uberblick}
-	
+\begin{large}\textbf{Ziel}\end{large}
+\begin{itemize}
+	\item Den oder die gegnerischen Schaukampfroboter fahrunf\"ahig machen oder in die Arenagrube versenken.
+\end{itemize}
+\vspace{20px}
+\begin{large}\textbf{Schaukampfroboter $\neq$ Roboter}\end{large}
+\begin{itemize}
+	\item Das \textbf{Sense - Think - Act} Paradigma wird nicht erf\"ullt
+	\item "Nur" leistungsf\"ahiges ferngesteuertes Funktionsmodell
+\end{itemize}
+\vspace{20px}
+\begin{large}\textbf{Wie passt Arduino ins Konzept?}\end{large}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Steroid}
+\begin{frame}{Arduino als elektronischer Fahrtregler (ESC) (1)}
+\begin{itemize}
+	\item Arduino wird als \textbf{ESC} eingesetzt
+	\begin{itemize}
+		\item Arduino setzt \textbf{Signale des Fernsteuerungsempf\"angers} auf \textbf{Motorsteuerkommandos} f\"ur \textbf{Motorshield} um
+	\end{itemize}
+\end{itemize}
  \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.7\textwidth]{./images/robot-steroid.jpg}
+ 	\centering
+ 	\includegraphics[width=0.7\textwidth]{./images/arduino-schnauzer.jpg}
  \end{figure}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{\"Uberblick}
-	
+\begin{frame}{Arduino als elektronischer Fahrtregler (ESC) (2)}
+\begin{itemize}
+	\item \textbf{Steroid}: Entwicklung einer eigenen Arduino basierten ESC Platine
+	\begin{itemize}
+		\item Vermeidung von Kabelbruch als Fehlerquelle
+		\item Kleinere Abmessungen m\"oglich
+	\end{itemize}
+\end{itemize}
+\begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.6\textwidth]{./images/arduino-steroid.jpg}
+\end{figure}
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Beauty Queen}
@@ -575,7 +611,7 @@ static E_DIRECTION get_direction();
 \begin{itemize}
 	\item Umbau eines konventionellen RC-Automodellbausatzes in ein Fahrzeug f\"ur Simultaneous Localization and Mapping
 \end{itemize}
-\vspace{1cm}
+\vspace{20px}
 \begin{large}\textbf{I/O}\end{large}
 \begin{itemize}
 	\item Sensoren
@@ -802,42 +838,102 @@ bool const pin_value = oD2->getPinValue();
 \begin{frame}{\"Uberblick}
 \begin{large}\textbf{Ziel}\end{large}
 \begin{itemize}
-	\item Bau eines Hexapods (weil es Spa\ss{} macht)
+	\item Bau eines Hexapods (weil es Spa\ss{} macht \Smiley{})
 \end{itemize}
-\vspace{1cm}
+\vspace{20px}
 \begin{large}\textbf{I/O}\end{large}
 \begin{itemize}
 	\item Sensoren
 	\begin{itemize}
-		\item TBD: 18 x Stromsensor
 		\item RaspberryPiCam
 	\end{itemize}
 	\item Aktoren
 	\begin{itemize}
-		\item 6 x 3 RC Servos (Puls-Weiten-Modulation)
-		\item 2 RC Servos (Kopf)
+		\item 6 x 3 RC Servos (Beine) (Puls-Weiten-Modulation)
+		\item 2 RC Servos (Kopf) (Puls-Weiten-Modulation)
 	\end{itemize}
 \end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Umsetzung}
 \begin{itemize}
-	\item Arduino-I/O-System nicht schnell genug f\"ur Erzeugung der ben\"otigten PWM-Steuersignale
+	\item \textbf{Erster Ansatz}: Servo Shield + Ansteuerung via I2C-Br\"ucke des Arduino-I/O-Systems
 \end{itemize}
 \begin{itemize}
-	\item Neuer Ansatz notwendig: LXRobotics Servo Shield + Arduino + ROS Serial ... \textbf{TODO}
+	\item \textbf{Problem}: Arduino-I/O-System nicht schnell genug f\"ur Kommunikation der ben\"otigten Steuersignale an das Servo Shield
 \end{itemize}
+\begin{itemize}
+	\item \textbf{Neuer Ansatz} unter Einbeziehung des \textbf{Robot Operating System} (ROS) notwendig
+\end{itemize}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}{Was ist ROS?}
+\begin{alertblock}{ROS}
+\textit{The Robot Operating System (ROS) is a flexible framework for writing robot software. It is a collection of tools, libraries and conventions that aim to simplify the task of creating complex and robust robot behavior across a wide variety of robotic platforms.}
+\end{alertblock}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}{Warum ROS?}
+	\begin{itemize}
+		\item $>$ \textbf{3000 Drittpakete} stellen L\"osungen f\"ur verschiedene, in der Robotik h\"aufig auftretende Probleme zur Verf\"ugung
+		\item Integration mit \textbf{Gazebo, OpenCV, PointCloudLibrary, MoveIt}
+		\item Umfangreiche Dokumentation und Support durch eine \textbf{aktive Community}
+		\begin{itemize}
+			\item $>$ \textbf{5700} Benutzer bei der ROS Q\&{}A-Website
+			\item $>$ \textbf{22000} ROS-Wiki Seiten
+		\end{itemize}
+		\item Permissive \textbf{BSD}-Lizenz
+	\end{itemize}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\textwidth]{./images/ros-equation.png}
+		\caption{Robot Operating System\cite{ROS:2015:Online}}
+		\label{fig:ros_equation}
+	\end{figure}
+	\begin{itemize}
+		\item ROS-Literatur: \url{https://github.com/AR2A/literatur}
+	\end{itemize}
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{rosserial (1)}
+\begin{alertblock}{rosserial ...}
+... is a protocol for wrapping standard ROS serialized messages and multiplexing multiple topics and services over a character device such as a serial port or network socket.
+\end{alertblock}
+\begin{itemize}
+	\item \textbf{rosserial erm\"oglicht die Kommunikation mit einem Arduino via Topics und Services}
+\end{itemize}
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{rosserial (2)}
+	
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Conrad}
- \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.7\textwidth]{./images/robot-conrad.jpg}
- \end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{./images/robot-conrad.jpg}
+\end{figure}
+\begin{itemize}
+	\item \textbf{Motorsteuerung}: \url{https://github.com/AR2A/motor-controller-highpower-motorshield}
+\end{itemize}
+\begin{itemize}
+	\item \textbf{Inertial Measurement Unit}: \url{https://github.com/AR2A/imu-minimu-arduino}
+\end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{\"Uberblick}
-
+\begin{frame}{Zusammenfassung}
+\begin{large}F\"ur \textbf{kleine} Projekte\end{large}
+\begin{itemize}
+	\item Arduino kann komplette Steuerung des Roboters \"ubernehmen
+	\item Verwendung von Arduino als Vorlage f\"ur eigene Arduino basierte Platinen
+\end{itemize}
+\vspace{20px}
+\begin{large}F\"ur \textbf{gro\ss{}e} Projekte\end{large}
+\begin{itemize}
+	\item Arduino erm\"oglicht einem \"ubergeordneten Steuerungssystem den einfachen Zugriff auf Sensoren und Aktoren
+	\item F\"ur Rapid-Prototyping (Arduino + Shield + Software)
+	\item F\"ur professionalle L\"osung ist Entwicklung eigener Hard/Software notwendig
+\end{itemize}
 \end{frame}
 %----------------------------------------------------------------------------------------
 \begin{frame}
