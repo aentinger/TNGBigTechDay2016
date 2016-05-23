@@ -178,7 +178,7 @@
 \begin{frame}{Alexander Entinger - Roboter (3)}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
-			\begin{large}ROS enabled SLAM Demonstrator \textbf{Beauty Queen}\end{large}
+			\begin{large}ROS basierter SLAM Demonstrator \textbf{Beauty Queen}\end{large}
 			\begin{itemize}
 				\item Masterarbeitsprojekt (2012/13)
 			\end{itemize}
@@ -299,10 +299,10 @@
 %%----------------------------------------------------------------------------------------
 \begin{frame}[fragile]{Arduino Plattform: Software (1)}
 \begin{itemize}
-	\item Kostenlose Open Source (GPL) \textbf{Arduino-IDE} (Java)
+	\item Kostenlose \textbf{Arduino-IDE} (Java / GPL)
 \end{itemize}
 \begin{itemize}
-	\item Komplexes Thema der Embedded Programmierung wird durch Software-Framework stark vereinfacht
+	\item Komplexes Thema der Embedded Programmierung wird durch \textbf{Software-Framework} stark vereinfacht
 	\begin{itemize}
 	 	\item \textbf{Nur 2 Funktionen:}
 	 	\begin{itemize}
@@ -638,7 +638,7 @@ static E_DIRECTION get_direction();
 	\end{itemize}
 \end{itemize}
 \begin{itemize}
-	\item \textbf{L\"osung}: Entwicklung eines Arduino-I/O-Systems als Vermittler zwischen den Sensoren/Aktoren und dem PC
+	\item \textbf{L\"osung}: Entwicklung eines \textbf{Arduino-I/O-Systems} als Vermittler zwischen den Sensoren/Aktoren und dem PC
 \end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
@@ -686,42 +686,9 @@ bool const pin_value = oD2->getPinValue();
 \end{lstlisting}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Arduino-I/O-System: Angebotene I/O-Funktionen}
-	\begin{itemize}
-		\item I/O-Funktion verf\"ugbar via $\mu{}C$-I/O-Pin:
-		\begin{table}[htbp]
-			\begin{tabular}{|c|c|}
-				\hline 
-				\textbf{I/O-Funktion} & \textbf{Anzahl von I/O-Einheiten} \\ 
-				\hline \hline 
-				Analoger Eingang & Max. 6 \\ 
-				\hline 
-				Digitaler Eingang & max. 12  \\ 
-				\hline
-				Digitaler Ausgang & max. 12 \\ 
-				\hline
-				Hardware PWM & max. 2 \\ 
-				\hline
-				Software PWM & max. 6 \\ 
-				\hline
-				Event Z\"ahler & max. 2 \\
-				\hline
-				I2C Br\"ucke & max. 1 \\
-				\hline
-			\end{tabular}
-		\end{table}
-		\item Weiters:
-		\begin{itemize}
-			\item Hardware-Reset
-			\item 16-Bit Board-ID
-			\item Chip-Temperature
-		\end{itemize}
-	\end{itemize}
-\end{frame}
-%%----------------------------------------------------------------------------------------
 \begin{frame}{Arduino-I/O-System: Verifikation (1)}
 	\begin{itemize}
-		\item Die Verifikation der individuellen Komponenten ist nicht zielf\"uhrend $\rightarrow$ Verifikation des Gesamtsystems notwendig
+		\item Die Verifikation der individuellen Komponenten ist nicht zielf\"uhrend $\rightarrow$ \textbf{Verifikation des Gesamtsystems notwendig}
 	\end{itemize}
 	\begin{itemize}
 		\item Gesamtsystem = C++ Library, Kommunikationsschnittstelle, Arduino Firmware $\rightarrow$ \textbf{Ende-Zu-Ende-Verifikation}
@@ -890,15 +857,25 @@ bool const pin_value = oD2->getPinValue();
 \end{figure}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{ROS Basics: Message}
+\begin{frame}[fragile]{ROS Basics: Message}
 \begin{alertblock}{Messages ...}
 ... werden zur Kommunikation zwischen Nodes eingesetzt und sind eine Datenstruktur, welche aus typisierten Eintr\"agen besteht.
 \end{alertblock}
+\vspace{20px}
+\begin{itemize}
+	\item geometry\_msgs/Point.msg
+\end{itemize}
+\begin{lstlisting}[frame=single, language=C]
+# This contains the position of a point in free space
+float64 x
+float64 y
+float64 z
+\end{lstlisting}
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{ROS Basics: Topic}
 \begin{alertblock}{Topic ...}
-... bezeichnet einen eindeutigen Namen den die Nodes zum Auffinden ihrer Kommunikationspartner f\"ur den Austausch von Messages ben\"otigen.
+... bezeichnet einen eindeutigen Namen unter dem Nodes Messages ver\"offentlichen oder abbonieren.
 \end{alertblock}
 \begin{itemize}
 	\item Erzeugung und Verbrauch von Daten ist \textbf{entkoppelt} (Producer/Consumer-Pattern)
@@ -912,7 +889,7 @@ bool const pin_value = oD2->getPinValue();
 		\label{fig:ros_topic}
 	\end{figure}
 	\item \textbf{Unidirektionale} Kommunikation
-	\item \textbf{Punkt-zu-Punkt} und \textbf{Punkt-zu-vielen-Punkten}
+	\item \textbf{Point-to-Point} und \textbf{Point-to-Multipoint}
 \end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
@@ -921,8 +898,8 @@ bool const pin_value = oD2->getPinValue();
 ... bezeichnet die bidirektionale Kommunikation zwischen zwei Nodes welche aus einem Service Request und einer Service Response bestehen.
 \end{alertblock}
 \begin{itemize}
-	\item \textbf{Request} $\rightarrow$ $Node_1$ verlangt die Ausf\"uhrung eines Service von $Node_2$ (z.B. eine Addition)
-	\item \textbf{Response} $\rightarrow$ $Node_2$ f\"uhrt den Service aus und returniert das Ergebnis an $Node_2$
+	\item \textbf{Request} $\rightarrow$ $N_1$ verlangt die Ausf\"uhrung eines Service von $N_2$ (z.B. eine Addition)
+	\item \textbf{Response} $\rightarrow$ $N_2$ f\"uhrt den Service aus und returniert das Ergebnis an $N_1$
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.6\textwidth]{./images/ros-service.pdf}
@@ -957,14 +934,25 @@ ROS ist ein Framework welches einfache Interprozesskommunikation erm\"oglicht.
 \begin{frame}{Conrad}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\textwidth]{./images/robot-conrad.jpg}
+	\includegraphics[width=0.7\textwidth]{./images/robot-conrad.jpg}
 \end{figure}
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{Conrad}
+\begin{large}\textbf{Arduino basierte Komponenten}:\end{large}
 \begin{itemize}
 	\item \textbf{Motorsteuerung}: \url{https://github.com/AR2A/motor-controller-highpower-motorshield}
 \end{itemize}
 \begin{itemize}
 	\item \textbf{Inertial Measurement Unit}: \url{https://github.com/AR2A/imu-minimu-arduino}
 \end{itemize}
+\vspace{20px}
+\begin{large}\textbf{ROS Literatur}:\end{large}
+\begin{itemize}
+	\item https://github.com/AR2A/literatur
+\end{itemize}
+\vspace{20px}
+\begin{large}\textbf{S\"amtlicher Quellcode steht unter BSD-3-Lizenz!}\end{large}
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Zusammenfassung}
