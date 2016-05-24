@@ -178,7 +178,7 @@
 \begin{frame}{Alexander Entinger - Roboter (3)}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
-			\begin{large}ROS SLAM Demonstrator \textbf{Beauty Queen}\end{large}
+			\begin{large}ROS/SLAM Demonstrator \textbf{Beauty Queen}\end{large}
 			\begin{itemize}
 				\item Masterarbeitsprojekt (2012/13)
 			\end{itemize}
@@ -304,7 +304,7 @@
 \begin{itemize}
 	\item Komplexes Thema der Embedded Programmierung wird durch \textbf{Software-Framework} stark vereinfacht
 	\begin{itemize}
-	 	\item \textbf{Nur 2 Funktionen:}
+	 	\item \textbf{\textit{(1)} Nur 2 Funktionen:}
 	 	\begin{itemize}
 	 		\item \textbf{setup} $\rightarrow$ wird beim Start einmalig ausgef\"uhrt
 	 		\item \textbf{loop} $\rightarrow$ wird kontinuierlich ausgef\"uhrt
@@ -326,7 +326,7 @@ void loop()
 %%----------------------------------------------------------------------------------------
 \begin{frame}[fragile]{Arduino Plattform: Software (2)}
 \begin{itemize}
- 	\item \textbf{$\mu$C-Bibliotheken} (LGPL) erm\"oglichen Hardware-Zugriff \"uber \textbf{abstrakte High-Level Befehle} ohne Detail-Kenntnisse der Interna des verwendeten $\mu$Cs
+ 	\item \textbf{\textit{(2)} $\mu$C-Bibliotheken} (LGPL) erm\"oglichen Hardware-Zugriff \"uber \textbf{abstrakte High-Level Befehle} ohne Detail-Kenntnisse der Interna des verwendeten $\mu$Cs
 \end{itemize}
 \begin{lstlisting}[frame=single, language=C]
 /* I/O (Digital/Analog) */
@@ -375,7 +375,7 @@ Wire.endTransmission();
 %%----------------------------------------------------------------------------------------
 \begin{frame}[fragile]{Arduino Shields (2)}
 \begin{itemize}
-	\item \textbf{Open Source Arduino Libraries} erleichtern die direkte Verwendung von Arduino Shields 
+	\item Quelloffene \textbf{Arduino Libraries} erleichtern die direkte Verwendung von Arduino Shields 
 \end{itemize}
 \begin{itemize}
 	\item \textbf{Komplexe Sachverhalte} (wie z.B. die Ansteuerung eines Gleichstrommotors \"uber Puls-Weiten-Modulation) \textbf{werden hinter einfach zu benutzenden Schnittstellen versteckt}
@@ -391,7 +391,7 @@ static E_DIRECTION get_direction();
 \end{lstlisting}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Wegbereiter der DIY-Revolution}
+\begin{frame}{Verbreitung}
 \begin{itemize}
 	\item \textbf{2005}: 200 (Erstauflage)\cite{IEEE:2016:TheMakingOfArduino}
 \end{itemize}
@@ -819,15 +819,26 @@ bool const pin_value = oD2->getPinValue();
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Umsetzung}
+\begin{columns}
+	\begin{column}{0.7\textwidth}
 \begin{itemize}
-	\item \textbf{Erster Ansatz}: Servo Shield + Ansteuerung via I2C-Br\"ucke des Arduino-I/O-Systems
+	\item Erster Ansatz: \textbf{Servo Shield (I2C) + Ansteuerung via I2C-Br\"ucke} des Arduino-I/O-Systems
 \end{itemize}
 \begin{itemize}
 	\item \textbf{Problem}: Arduino-I/O-System nicht schnell genug f\"ur Kommunikation der ben\"otigten Steuersignale an das Servo Shield
 \end{itemize}
 \begin{itemize}
-	\item \textbf{Neuer Ansatz} unter Einbeziehung des \textbf{Robot Operating System} (ROS)
+	\item Neuer Ansatz unter Einbeziehung des \textbf{Robot Operating System} (ROS)
 \end{itemize}
+	\end{column}
+	\begin{column}{0.3\textwidth}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1.0\textwidth]{./images/servo-shield.jpg}
+			\caption{LXRobotics Servo Shield}
+		\end{figure}
+	\end{column}
+\end{columns}
 \end{frame}
 %----------------------------------------------------------------------------------------
 \begin{frame}{Was ist ROS?}
@@ -847,7 +858,7 @@ bool const pin_value = oD2->getPinValue();
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{./images/rxgraph-turtle-key.png}
-	\caption{Source: \cite{ROS:2015:Online}}
+	\caption{Graph einer ROS Demo-Applikation\cite{ROS:2015:Online}}
 	\label{fig:ros_graph}
 \end{figure}
 \end{frame}
@@ -884,7 +895,9 @@ float64 z
 		\label{fig:ros_topic}
 	\end{figure}
 	\item \textbf{Unidirektionale} Kommunikation
-	\item \textbf{Point-to-Point} und \textbf{Point-to-Multipoint}
+	\begin{itemize}
+		\item \textbf{1-zu-1} und \textbf{1-zu-n}
+	\end{itemize}
 \end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
@@ -901,32 +914,53 @@ float64 z
 		\label{fig:ros_service}
 	\end{figure}
 	\item Konkrete Implementierung als \textbf{Remote Procedure Call}
-	\item \textbf{Bidirektionale} Kommunikation
+	\item \textbf{Bidirektionale} Kommunikation (\textbf{1-zu-1})
 \end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{ROS Basics: Zusammenfassung}
 \begin{center}
 \begin{huge}
-ROS ist ein Framework, welches einen strukturierten Ansatz f\"ur die einfache Kommunikation zwischen verschiedenen Prozessen erm\"oglicht.
+ROS ist ein Framework, welches einen strukturierten Ansatz f\"ur einfache Interprozesskommunikation  erm\"oglicht.
 \end{huge}
 \end{center}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{rosserial (1)}
+\begin{frame}{ROS Package rosserial (1)}
 \begin{alertblock}{rosserial ...}
 ... is a protocol for wrapping standard ROS serialized messages and multiplexing multiple topics and services over a character device such as a serial port or network socket.
 \end{alertblock}
 \vspace{10px}
-\begin{large}\textbf{oder}\end{large}
+\begin{large}\textbf{oder (vereinfacht)}\end{large}
 \vspace{10px}
 \begin{alertblock}{rosserial ...}
 ... erm\"oglicht die Kommunikation mit einem Arduino via Topics und Services.
 \end{alertblock}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{rosserial (2)}
-	
+\begin{frame}{ROS Package rosserial (2)}
+\begin{columns}
+\begin{column}{0.7\textwidth}
+\begin{itemize}
+	\item High-Level Algorithmen wie z.B. \textbf{Inverse Kinematik} oder \textbf{Gait-Erzeugung} erfolgen \textbf{in ROS} unter Ausn\"utzung der vorhandenen Bibliotheken
+\end{itemize}
+\begin{itemize}
+	\item Steuerbefehle f\"ur Servos werden als \textbf{ROS Message an Arduino} versandt
+\end{itemize}
+\begin{itemize}
+	\item Kompakte\textbf{ Arduino Firmware wertet Messages aus} und \textbf{steuert Servo Shield} entsprechend der Vorgaben an
+\end{itemize}
+\begin{itemize}
+	\item \textbf{Servo Shield erzeugt PWM-Signale} f\"ur die Servos der Hexapod Beine
+\end{itemize}
+\end{column}
+	\begin{column}{0.3\textwidth}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.9\textwidth]{./images/rosserial-servo-shield.pdf}
+		\end{figure}
+	\end{column}
+\end{columns}
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Conrad}
