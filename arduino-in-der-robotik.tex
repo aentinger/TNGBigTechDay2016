@@ -178,7 +178,7 @@
 \begin{frame}{Alexander Entinger - Roboter (3)}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
-			\begin{large}ROS basierter SLAM Demonstrator \textbf{Beauty Queen}\end{large}
+			\begin{large}ROS SLAM Demonstrator \textbf{Beauty Queen}\end{large}
 			\begin{itemize}
 				\item Masterarbeitsprojekt (2012/13)
 			\end{itemize}
@@ -222,7 +222,7 @@
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Die Anf\"ange von Arduino (1)}
 \begin{itemize}
-	 \item Entwicklung des Arduino Konzepts durch \textbf{Massimo Banzi} und \textbf{David Cuartielles}\footnote{Weitere Teammitglieder: Tom Igoe, Gianluca Martino, David Mellis\cite{IEEE:2016:TheMakingOfArduino}\\}
+	 \item Erfinder des Arduino: \textbf{Massimo Banzi} und \textbf{David Cuartielles} in 2005\footnote{Weitere Teammitglieder: Tom Igoe, Gianluca Martino, David Mellis\cite{IEEE:2016:TheMakingOfArduino}\\}
 \end{itemize}
 \begin{itemize}
 	\item \textbf{Hintergrund}: Banzi war als \textbf{Associate Professor} bei dem \textbf{Interaction Design Institute Ivrea} (Italien) f\"ur die \textbf{Physical Computing} Projekte verantwortlich.
@@ -236,13 +236,13 @@
 \begin{columns}
 	\begin{column}{0.7\textwidth}
 	\begin{itemize}
-		\item Bisherige Plattform f\"ur Physical Computing am IDII: \textbf{BASIC Stamp}
+		\item Bisherige Plattform f\"ur Physical Computing Projekte am IDII: \textbf{BASIC Stamp}
 		\begin{itemize}
-			\item \textbf{PIC} basierte $\mu{}$C-Board mit integriertem BASIC-Interpreter
+			\item \textbf{PIC} basierte $\mu{}$C-Board mit integriertem \textbf{BASIC-Interpreter}
 			\item Nachteile:
 			\begin{itemize}
 				\item Teuer ($\approx$ 100 \$)
-				\item Nicht f\"ur alle Projekte ausreichende Rechenleistung
+				\item (Unzureichende) Rechenleistung
 			\end{itemize}
 		\end{itemize}
 	\end{itemize}
@@ -258,7 +258,7 @@
 \end{columns}
 \vspace{20px}
 \begin{itemize}
-	\item \textbf{Konsequenz:} Konzeption der aus \textbf{Hard- und Software}komponenten bestehenden \textbf{Arduino Plattform} in 2005
+	\item \textbf{Konsequenz:} Konzeption der aus \textbf{Hard- und Software}komponenten bestehenden \textbf{Arduino Plattform}
 \end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
@@ -411,18 +411,17 @@ static E_DIRECTION get_direction();
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Sergeant Pain}
+ \begin{large}\textbf{Ziel}\end{large}
+ \begin{itemize}
+ 	\item Autonome Erkennung des gegnerischen Roboters um diesen anschlie\ss{}end aus dem Ring zu schieben \href{./videos/sergeant-pain.mp4}{\beamergotobutton{Video}}
+ \end{itemize}
  \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\textwidth]{./images/robot-sergeant-pain.jpg}
+  \includegraphics[width=0.6\textwidth]{./images/robot-sergeant-pain.jpg}
  \end{figure}
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{\"Uberblick}
-\begin{large}\textbf{Ziel}\end{large}
-\begin{itemize}
-	\item Autonome Erkennung des gegnerischen Roboters um diesen anschlie\ss{}end aus dem Ring zu schieben \href{./videos/sergeant-pain.mp4}{\beamergotobutton{Video}}
-\end{itemize}
-\vspace{20px}
 \begin{large}\textbf{I/O}\end{large}
 \begin{itemize}
 	\item Sensoren
@@ -473,18 +472,17 @@ static E_DIRECTION get_direction();
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Evolution}
- \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.7\textwidth]{./images/robot-evolution.jpg}
- \end{figure}
-\end{frame}
-%%----------------------------------------------------------------------------------------
-\begin{frame}{\"Uberblick}
 \begin{large}\textbf{Ziel}\end{large}
 \begin{itemize}
 	\item Autonome Erkennung des gegnerischen Roboters um diesen anschlie\ss{}end aus dem Ring zu schieben
 \end{itemize}
-\vspace{20px}
+ \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{./images/robot-evolution.jpg}
+ \end{figure}
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{\"Uberblick}
 \begin{large}\textbf{I/O}\end{large}
 \begin{itemize}
 	\item Sensoren
@@ -551,18 +549,17 @@ static E_DIRECTION get_direction();
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Schnauzer}
- \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.7\textwidth]{./images/robot-schnauzer.jpg}
- \end{figure}
-\end{frame}
-%%----------------------------------------------------------------------------------------
-\begin{frame}{\"Uberblick}
 \begin{large}\textbf{Ziel}\end{large}
 \begin{itemize}
 	\item Den oder die gegnerischen Schaukampfroboter fahrunf\"ahig machen oder in die Arenagrube versenken.
 \end{itemize}
-\vspace{20px}
+ \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{./images/robot-schnauzer.jpg}
+ \end{figure}
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{\"Uberblick}
 \begin{large}\textbf{Schaukampfroboter $\neq$ Roboter}\end{large}
 \begin{itemize}
 	\item Das \textbf{Sense - Think - Act} Paradigma wird nicht erf\"ullt
@@ -600,18 +597,17 @@ static E_DIRECTION get_direction();
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Beauty Queen}
- \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.7\textwidth]{./images/robot-beauty-queen.jpg}
- \end{figure}
-\end{frame}
-%%----------------------------------------------------------------------------------------
-\begin{frame}{\"Uberblick (1)}
 \begin{large}\textbf{Ziel}\end{large}
 \begin{itemize}
 	\item Umbau eines konventionellen RC-Automodellbausatzes in ein Fahrzeug f\"ur Simultaneous Localization and Mapping
 \end{itemize}
-\vspace{20px}
+ \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{./images/robot-beauty-queen.jpg}
+ \end{figure}
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{\"Uberblick (1)}
 \begin{large}\textbf{I/O}\end{large}
 \begin{itemize}
 	\item Sensoren
@@ -752,7 +748,7 @@ bool const pin_value = oD2->getPinValue();
 	\begin{itemize}
 		\item \textbf{Schlussfolgerung}: Hauptanwendungsgebiet sind Applikationen bei denen die CED keine gro\ss{}e Rolle spielt, wie z.B.
 		\begin{itemize}
-			\item Steuerung von Status LEDs, \"Uberwachen der Batteriespannung, (RC Servo Ansteuerung), etc.
+			\item Steuerung von Status LEDs, \"Uberwachen der Batteriespannung, etc.
 		\end{itemize}
 	\end{itemize}
 \end{frame}
@@ -775,7 +771,8 @@ bool const pin_value = oD2->getPinValue();
  \end{itemize}
 \begin{large}\textbf{Einschr\"ankungen:}\end{large}
 \begin{itemize}
- \item Arduino-I/O-System f\"ur Echtzeitanwendungen gar nicht/nur eingeschr\"ankt einsetzbar: Folgende I/O Funktionen wurden \"uber eine separate Firmware f\"ur den Bordrechner zur Verf\"ugung gestellt:
+ \item Arduino-I/O-System f\"ur Echtzeitanwendungen gar nicht/nur eingeschr\"ankt einsetzbar: 
+ \item Folgende I/O Funktionen wurden \"uber eine separate Firmware f\"ur den Bordrechner zur Verf\"ugung gestellt:
  \begin{itemize}
   \item Abfrage der Daten der IMU (Inertial Measurement Unit)
   \item Auswertung der Reifenencoder
@@ -796,18 +793,17 @@ bool const pin_value = oD2->getPinValue();
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Lex}
- \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.7\textwidth]{./images/robot-lex.jpg}
- \end{figure}
-\end{frame}
-%%----------------------------------------------------------------------------------------
-\begin{frame}{\"Uberblick}
 \begin{large}\textbf{Ziel}\end{large}
 \begin{itemize}
 	\item Bau eines Hexapods (weil es Spa\ss{} macht \Smiley{})
 \end{itemize}
-\vspace{20px}
+ \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{./images/robot-lex.jpg}
+ \end{figure}
+\end{frame}
+%%----------------------------------------------------------------------------------------
+\begin{frame}{\"Uberblick}
 \begin{large}\textbf{I/O}\end{large}
 \begin{itemize}
 	\item Sensoren
@@ -847,7 +843,6 @@ bool const pin_value = oD2->getPinValue();
 \begin{itemize}
 	\item Typische Applikation besteht aus mehreren Nodes
 	\item Die Bezeichnung \textbf{Node} stammt von der graphischen Abbildung aller laufenden Prozesse sowie der Kommunikation zwischen den Prozessen als \textbf{gerichteter Graph} (Tool: \textbf{rqt\_graph})
-	\item Eindeutige Identifikation eines Prozesses durch einen \textbf{Graph Ressource Name} (''Nodename'')
 \end{itemize}
 \begin{figure}[H]
 	\centering
@@ -913,7 +908,7 @@ float64 z
 \begin{frame}{ROS Basics: Zusammenfassung}
 \begin{center}
 \begin{huge}
-ROS ist ein Framework welches einfache Interprozesskommunikation erm\"oglicht.
+ROS ist ein Framework, welches einen strukturierten Ansatz f\"ur die einfache Kommunikation zwischen verschiedenen Prozessen erm\"oglicht.
 \end{huge}
 \end{center}
 \end{frame}
@@ -935,9 +930,13 @@ ROS ist ein Framework welches einfache Interprozesskommunikation erm\"oglicht.
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Conrad}
+\begin{large}\textbf{Ziel}\end{large}
+\begin{itemize}
+	\item Entwicklung eines Rettungsroboters f\"ur die Teilnahme am RoboCupRescue Wettbewerb.
+\end{itemize}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\textwidth]{./images/robot-conrad.jpg}
+	\includegraphics[width=0.6\textwidth]{./images/robot-conrad.jpg}
 \end{figure}
 \end{frame}
 %%----------------------------------------------------------------------------------------
