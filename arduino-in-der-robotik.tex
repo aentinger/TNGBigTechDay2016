@@ -337,7 +337,7 @@ int const analogValInLSB = analogRead(analogPin);
 /* Communication (Serial/I2C) */
 Serial.println("My output string");
 
-Wire.beginTransmission(0x2C);
+Wire.beginTransmission(devAddr);
 Wire.write(regAddr);
 Wire.write(regVal);
 Wire.endTransmission();
@@ -578,7 +578,8 @@ static E_DIRECTION get_direction();
 \end{itemize}
  \begin{figure}[H]
  	\centering
- 	\includegraphics[width=0.7\textwidth]{./images/arduino-schnauzer.jpg}
+ 	\includegraphics[width=0.5\textwidth]{./images/arduino-schnauzer.jpg}
+ 	\caption{ESC Schnauzer: 2 x (Arduino + Highpower Motorshield)}
  \end{figure}
 \end{frame}
 %%----------------------------------------------------------------------------------------
@@ -592,7 +593,8 @@ static E_DIRECTION get_direction();
 \end{itemize}
 \begin{figure}[H]
  	\centering
- 	\includegraphics[width=0.6\textwidth]{./images/arduino-steroid.jpg}
+ 	\includegraphics[width=0.5\textwidth]{./images/arduino-steroid.jpg}
+ 	\caption{ESC Steroid}
 \end{figure}
 \end{frame}
 %%----------------------------------------------------------------------------------------
@@ -884,7 +886,7 @@ float64 z
 ... bezeichnet einen eindeutigen Namen unter dem Nodes Messages ver\"offentlichen oder abbonieren.
 \end{alertblock}
 \begin{itemize}
-	\item Erzeugung und Verbrauch von Daten ist \textbf{entkoppelt} (Producer/Consumer-Pattern)
+	\item \textbf{Erzeugung und Verbrauch} von Daten \textbf{ist entkoppelt} (\textbf{Producer/Consumer-Pattern})
 	\begin{itemize}
 		\item Datenquellen/Source (\textbf{publish/ver\"offentlichen}) Messages zu einem Topic
 		\item Datensenken/Sink (\textbf{subscribe/abbonieren}) Messages von einem Topic
@@ -921,7 +923,7 @@ float64 z
 \begin{frame}{ROS Basics: Zusammenfassung}
 \begin{center}
 \begin{huge}
-ROS ist ein Framework, welches einen strukturierten Ansatz f\"ur einfache Interprozesskommunikation  erm\"oglicht.
+ROS ist ein Framework, welches einen strukturierten Ansatz f\"ur einfache Interprozesskommunikation bietet.
 \end{huge}
 \end{center}
 \end{frame}
