@@ -686,7 +686,7 @@ bool const pin_value = oD2->getPinValue();
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Arduino-I/O-System: Verifikation (1)}
 	\begin{itemize}
-		\item Die Verifikation der individuellen Komponenten ist nicht zielf\"uhrend $\rightarrow$ \textbf{Verifikation des Gesamtsystems notwendig}
+		\item \textbf{Verifikation des Gesamtsystems notwendig}
 	\end{itemize}
 	\begin{itemize}
 		\item Gesamtsystem = C++ Library, Kommunikationsschnittstelle, Arduino Firmware $\rightarrow$ \textbf{Ende-Zu-Ende-Verifikation}
@@ -898,14 +898,14 @@ float64 z
 	\end{figure}
 	\item \textbf{Unidirektionale} Kommunikation
 	\begin{itemize}
-		\item \textbf{1-zu-1} und \textbf{1-zu-n}
+		\item \textbf{1-zu-1} oder \textbf{1-zu-n}
 	\end{itemize}
 \end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{ROS Basics: Service}
 \begin{alertblock}{Service ...}
-... bezeichnet die bidirektionale Kommunikation zwischen zwei Nodes welche aus einem Service Request und einer Service Response bestehen.
+... bezeichnet die bidirektionale Kommunikation zwischen zwei Nodes welche aus einem Service Request und einer Service Response besteht.
 \end{alertblock}
 \begin{itemize}
 	\item \textbf{Request} $\rightarrow$ $N_1$ verlangt die Ausf\"uhrung eines Service von $N_2$ (z.B. eine Addition)
@@ -915,7 +915,7 @@ float64 z
 		\includegraphics[width=0.6\textwidth]{./images/ros-service.pdf}
 		\label{fig:ros_service}
 	\end{figure}
-	\item Konkrete Implementierung als \textbf{Remote Procedure Call}
+	\item Funktionsweise wie \textbf{Remote Procedure Call}
 	\item \textbf{Bidirektionale} Kommunikation (\textbf{1-zu-1})
 \end{itemize}
 \end{frame}
@@ -985,12 +985,12 @@ ROS ist ein Framework, welches einen strukturierten Ansatz f\"ur einfache Interp
 	\item \textbf{Inertial Measurement Unit}: \url{https://github.com/AR2A/imu-minimu-arduino}
 \end{itemize}
 \vspace{20px}
+\begin{large}\textbf{S\"amtlicher Quellcode steht unter der BSD-3-Lizenz!}\end{large}
+\vspace{20px}
 \begin{large}\textbf{ROS Literatur}:\end{large}
 \begin{itemize}
 	\item https://github.com/AR2A/literatur
 \end{itemize}
-\vspace{20px}
-\begin{large}\textbf{S\"amtlicher Quellcode steht unter der BSD-3-Lizenz!}\end{large}
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Zusammenfassung}
