@@ -472,17 +472,8 @@ static E_DIRECTION get_direction();
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Evolution}
-\begin{large}\textbf{Ziel}\end{large}
-\begin{itemize}
-	\item Autonome Erkennung des gegnerischen Roboters um diesen anschlie\ss{}end aus dem Ring zu schieben.
-\end{itemize}
- \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.6\textwidth]{./images/robot-evolution.jpg}
- \end{figure}
-\end{frame}
-%%----------------------------------------------------------------------------------------
-\begin{frame}{\"Uberblick}
+\begin{columns}
+	\begin{column}{0.6\textwidth}
 \begin{large}\textbf{I/O}\end{large}
 \begin{itemize}
 	\item Sensoren
@@ -496,6 +487,15 @@ static E_DIRECTION get_direction();
 		\item 2 x RC Servos (Puls-Weiten-Modulation)
 	\end{itemize}
 \end{itemize}
+	\end{column}
+	\begin{column}{0.4\textwidth}
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=1.0\textwidth]{./images/robot-evolution.jpg}
+ 	\caption{Mini-Sumo-Roboter Evolution}
+ \end{figure}
+	\end{column}
+\end{columns}
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Umsetzung (1)}
@@ -615,7 +615,7 @@ static E_DIRECTION get_direction();
 	\item Sensoren
 	\begin{itemize}
 		\item 1 x Microsoft Kinect
-		\item 1 x IMU
+		\item 1 x Inertial Measurement Unit
 		\item 2 x Reifenumdrehungssensoren
 	\end{itemize}
 	\item Aktoren
@@ -684,12 +684,12 @@ bool const pin_value = oD2->getPinValue();
 \end{lstlisting}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Arduino-I/O-System: Verifikation (1)}
+\begin{frame}{Arduino-I/O-System: Verifikation \"Uberblick}
 	\begin{itemize}
 		\item \textbf{Verifikation des Gesamtsystems notwendig}
 	\end{itemize}
 	\begin{itemize}
-		\item Gesamtsystem = C++ Library, Kommunikationsschnittstelle, Arduino Firmware $\rightarrow$ \textbf{Ende-Zu-Ende-Verifikation}
+		\item Gesamtsystem = C++ Library + Kommunikationsschnittstelle + Arduino Firmware $\rightarrow$ \textbf{End-to-End-Verifikation}
 	\end{itemize}
 	\begin{itemize}
 		\item \textbf{Idee}: Einige Pins werden als Eing\"ange, andere als Ausg\"ange definiert und diese auf \textbf{intelligente Art und Weise} miteinander verbunden
@@ -699,7 +699,7 @@ bool const pin_value = oD2->getPinValue();
 	\end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Arduino-I/O-System: Verifikation (2)}
+\begin{frame}{Arduino-I/O-System: Verifikation der analogen Eing\"ange}
 	\begin{itemize}
 		\item Digitale Ausg\"ange \textbf{erzeugen} analoge Spannungen via \textbf{R2R Widerstandsnetzwerk}
 		\item Analoge Eing\"ange \textbf{messen} diese analogen Spannungen
@@ -773,7 +773,7 @@ bool const pin_value = oD2->getPinValue();
  \end{itemize}
 \begin{large}\textbf{Einschr\"ankungen:}\end{large}
 \begin{itemize}
- \item Arduino-I/O-System f\"ur Echtzeitanwendungen gar nicht/nur eingeschr\"ankt einsetzbar: 
+ \item Arduino-I/O-System f\"ur Echtzeitanwendungen nicht/nur eingeschr\"ankt einsetzbar: 
  \item Folgende I/O Funktionen wurden \"uber eine separate Firmware f\"ur den Bordrechner zur Verf\"ugung gestellt:
  \begin{itemize}
   \item Abfrage der Daten der IMU (Inertial Measurement Unit)
@@ -808,14 +808,10 @@ bool const pin_value = oD2->getPinValue();
 \begin{frame}{\"Uberblick}
 \begin{large}\textbf{I/O}\end{large}
 \begin{itemize}
-	\item Sensoren
-	\begin{itemize}
-		\item RaspberryPiCam
-	\end{itemize}
 	\item Aktoren
 	\begin{itemize}
-		\item 6 x 3 RC Servos (Beine) (Puls-Weiten-Modulation)
-		\item 2 RC Servos (Kopf) (Puls-Weiten-Modulation)
+		\item 18 x RC Servo (Beine) (Puls-Weiten-Modulation)
+		\item 2 x RC Servos (Kopf) (Puls-Weiten-Modulation)
 	\end{itemize}
 \end{itemize}
 \end{frame}
@@ -824,13 +820,28 @@ bool const pin_value = oD2->getPinValue();
 \begin{columns}
 	\begin{column}{0.7\textwidth}
 \begin{itemize}
-	\item Erster Ansatz: \textbf{Servo Shield (I2C) + Ansteuerung via I2C-Br\"ucke} des Arduino-I/O-Systems
+	\item Erster Ansatz:
+	\begin{itemize}
+		\item \textbf{Servo Shield} +
+		\item \textbf{Arduino-I/O-System}
+	\end{itemize}
 \end{itemize}
 \begin{itemize}
-	\item \textbf{Problem}: Arduino-I/O-System nicht schnell genug f\"ur Kommunikation der ben\"otigten Steuersignale an das Servo Shield
+	\item \textbf{Problem}: \textbf{CED $>>$ Dynamik des Systems} 
+	\begin{itemize}
+		\item I2C Zugriff (1 Byte) $\approx$ 5 ms
+		\item Servo-Update-Rate: 50 Hz / 20 ms
+	\end{itemize} 
 \end{itemize}
 \begin{itemize}
+	\item \textbf{Konsequenz}:
+	\begin{itemize}
+		\item Entwicklung einer eigenen Firmware + Protokoll + PC Software
+	\end{itemize}
+	\begin{large}oder\end{large}
+	\begin{itemize}
 	\item Neuer Ansatz unter Einbeziehung des \textbf{Robot Operating System} (ROS)
+	\end{itemize}
 \end{itemize}
 	\end{column}
 	\begin{column}{0.3\textwidth}
@@ -871,7 +882,7 @@ bool const pin_value = oD2->getPinValue();
 \end{alertblock}
 \vspace{20px}
 \begin{itemize}
-	\item geometry\_msgs/Point.msg
+	\item geometry\_msgs/\textbf{Point.msg}
 \end{itemize}
 \begin{lstlisting}[frame=single, language=C]
 # This contains the position of a point in free space
@@ -883,13 +894,13 @@ float64 z
 %%----------------------------------------------------------------------------------------
 \begin{frame}{ROS Basics: Topic}
 \begin{alertblock}{Topic ...}
-... bezeichnet einen eindeutigen Namen unter dem Nodes Messages ver\"offentlichen oder abbonieren.
+... bezeichnet einen mit einem eindeutigen Namen versehenen Datenbus \"uber den Messages zwischen Nodes ausgetauscht werden.
 \end{alertblock}
 \begin{itemize}
-	\item \textbf{Erzeugung und Verbrauch} von Daten \textbf{ist entkoppelt} (\textbf{Producer/Consumer-Pattern})
+	\item \textbf{Erzeugung und Verbrauch} von Daten \textbf{ist} voneinander \textbf{entkoppelt} (\textbf{Producer/Consumer-Pattern})
 	\begin{itemize}
-		\item Datenquellen/Source (\textbf{publish/ver\"offentlichen}) Messages zu einem Topic
-		\item Datensenken/Sink (\textbf{subscribe/abbonieren}) Messages von einem Topic
+		\item Datenquellen (Source) \textbf{ver\"offentlichen} (publish) Messages zu einem Topic
+		\item Datensenken (Sink) \textbf{abbonieren} (subscribe) Messages von einem Topic
 	\end{itemize}
 	\begin{figure}[H]
 		\centering
@@ -908,8 +919,9 @@ float64 z
 ... bezeichnet die bidirektionale Kommunikation zwischen zwei Nodes welche aus einem Service Request und einer Service Response besteht.
 \end{alertblock}
 \begin{itemize}
-	\item \textbf{Request} $\rightarrow$ $N_1$ verlangt die Ausf\"uhrung eines Service von $N_2$ (z.B. eine Addition)
-	\item \textbf{Response} $\rightarrow$ $N_2$ f\"uhrt den Service aus und returniert das Ergebnis an $N_1$
+	\item $N_1$ verlangt die Ausf\"uhrung eines Service von $N_2$ $\rightarrow$ \textbf{Request}
+    \item $N_2$ f\"uhrt den Service aus  ...
+	\item ... und returniert das Ergebnis an $N_1$ $\rightarrow$ \textbf{Response}
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.6\textwidth]{./images/ros-service.pdf}
@@ -928,29 +940,32 @@ ROS ist ein Framework, welches einen strukturierten Ansatz f\"ur einfache Interp
 \end{center}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{ROS Package rosserial (1)}
-\begin{alertblock}{rosserial ...}
-... is a protocol for wrapping standard ROS serialized messages and multiplexing multiple topics and services over a character device such as a serial port or network socket.
-\end{alertblock}
+\begin{frame}{ROS Packages}
+\begin{itemize}
+	\item ROS Software wird \"uber \textbf{Packages} (Pakete) organisiert
+\end{itemize}
+\begin{itemize}
+	\item Ein Package kann \textbf{Nodes, Daten, Konfigurationsdateien, Bibliotheken}, etc. enthalten
+\end{itemize}
 \vspace{10px}
-\begin{large}\textbf{oder (vereinfacht)}\end{large}
+\begin{large}\textbf{F\"ur Lex interessant:}\end{large}
 \vspace{10px}
 \begin{alertblock}{rosserial ...}
 ... erm\"oglicht die Kommunikation mit einem Arduino via Topics und Services.
 \end{alertblock}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{ROS Package rosserial (2)}
+\begin{frame}{Software Architektur von Lex mit rosserial}
 \begin{columns}
 \begin{column}{0.7\textwidth}
 \begin{itemize}
-	\item High-Level Algorithmen wie z.B. \textbf{Inverse Kinematik} oder \textbf{Gait-Erzeugung} erfolgen \textbf{in ROS} unter Ausn\"utzung der vorhandenen Bibliotheken
+	\item Implementierung von \textbf{High-Level Algorithmen} wie z.B. \textbf{Inverse Kinematik} oder \textbf{Gait-Erzeugung} \textbf{in ROS} unter Ausn\"utzung der vorhandenen Bibliotheken
 \end{itemize}
 \begin{itemize}
 	\item Steuerbefehle f\"ur Servos werden als \textbf{ROS Message an Arduino} versandt
 \end{itemize}
 \begin{itemize}
-	\item Kompakte\textbf{ Arduino Firmware wertet Messages aus} und \textbf{steuert Servo Shield} entsprechend der Vorgaben an
+	\item Kompakte Arduino Firmware mit \textbf{ROS Client Library wertet Messages aus} und \textbf{steuert Servo Shield} entsprechend der Vorgaben an
 \end{itemize}
 \begin{itemize}
 	\item \textbf{Servo Shield erzeugt PWM-Signale} f\"ur die Servos der Hexapod Beine
@@ -959,38 +974,24 @@ ROS ist ein Framework, welches einen strukturierten Ansatz f\"ur einfache Interp
 	\begin{column}{0.3\textwidth}
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=0.9\textwidth]{./images/rosserial-servo-shield.pdf}
+			\includegraphics[width=0.95\textwidth]{./images/rosserial-servo-shield.pdf}
 		\end{figure}
 	\end{column}
 \end{columns}
 \end{frame}
 %%----------------------------------------------------------------------------------------
-\begin{frame}{Conrad}
-\begin{large}\textbf{Ziel}\end{large}
+\begin{frame}{FH Projekt: Rettungsroboter Conrad}
+\begin{large}\textbf{Arduino basierte Komponenten}:\end{large}
 \begin{itemize}
-	\item Entwicklung eines Rettungsroboters f\"ur die Teilnahme am RoboCupRescue Wettbewerb.
+	\item \textbf{Motorsteuerung} (\textbf{BSD-3}): \url{https://github.com/AR2A/motor-controller-highpower-motorshield}
+\end{itemize}
+\begin{itemize}
+	\item \textbf{Inertial Measurement Unit} (\textbf{BSD-3}): \url{https://github.com/AR2A/imu-minimu-arduino}
 \end{itemize}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\textwidth]{./images/robot-conrad.jpg}
+	\includegraphics[width=0.45\textwidth]{./images/robot-conrad.jpg}
 \end{figure}
-\end{frame}
-%%----------------------------------------------------------------------------------------
-\begin{frame}{Conrad}
-\begin{large}\textbf{Arduino basierte Komponenten}:\end{large}
-\begin{itemize}
-	\item \textbf{Motorsteuerung}: \url{https://github.com/AR2A/motor-controller-highpower-motorshield}
-\end{itemize}
-\begin{itemize}
-	\item \textbf{Inertial Measurement Unit}: \url{https://github.com/AR2A/imu-minimu-arduino}
-\end{itemize}
-\vspace{20px}
-\begin{large}\textbf{S\"amtlicher Quellcode steht unter der BSD-3-Lizenz!}\\\end{large}
-\vspace{20px}
-\begin{large}\textbf{ROS Literatur}:\end{large}
-\begin{itemize}
-	\item https://github.com/AR2A/literatur
-\end{itemize}
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Zusammenfassung}
