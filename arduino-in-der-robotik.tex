@@ -685,12 +685,14 @@ bool const pin_value = oD2->getPinValue();
 \end{frame}
 %%----------------------------------------------------------------------------------------
 \begin{frame}{Arduino-I/O-System: Verifikation \"Uberblick}
-	\begin{itemize}
-		\item \textbf{Verifikation des Gesamtsystems notwendig}
-	\end{itemize}
-	\begin{itemize}
-		\item Gesamtsystem = C++ Library + Kommunikationsschnittstelle + Arduino Firmware $\rightarrow$ \textbf{End-to-End-Verifikation}
-	\end{itemize}
+\begin{itemize}
+ \item \textbf{Problem}: Wie kann sichergestellt werden, dass sich ein I/O-Pin korrekt
+  verh\"alt? 
+    \end{itemize} 
+   \begin{itemize}
+   \item \textbf{Externe Beschaltung} notwendig?
+\end{itemize}
+\vspace{10px}
 	\begin{itemize}
 		\item \textbf{Idee}: Einige Pins werden als Eing\"ange, andere als Ausg\"ange definiert und diese auf \textbf{intelligente Art und Weise} miteinander verbunden.
 	\end{itemize}
